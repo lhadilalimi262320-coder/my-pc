@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="html-root">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My PC - روبوت التشخيص روكي</title>
+    <title>My PC - روبوت التشخيص روكي AI</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-        body { background-color: #0b0f19; color: #f3f4f6; padding: 15px; display: flex; flex-direction: column; justify-between; min-height: 100vh; }
+        body { background-color: #0b0f19; color: #f3f4f6; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; min-height: 100vh; }
         header { background-color: #111827; border: 1px solid #1f2937; padding: 15px; border-radius: 12px; max-width: 800px; margin: 0 auto 20px auto; width: 100%; display: flex; justify-content: space-between; align-items: center; }
         h1 { color: #38bdf8; font-size: 20px; }
         .sub { color: #9ca3af; font-size: 12px; }
@@ -15,12 +15,12 @@
         h2 { font-size: 15px; color: #38bdf8; margin-bottom: 12px; border-bottom: 1px solid #1f2937; padding-bottom: 8px; }
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
         label { display: block; font-size: 12px; color: #9ca3af; margin-bottom: 5px; }
-        select, input[type="text"] { width: 100%; background-color: #030712; border: 1px solid #374151; border-radius: 8px; padding: 10px; color: #fff; font-size: 12px; outline: none; }
+        select, input[type="text"] { width: 100%; background-color: #030712; border: 1px solid #374151; border-radius: 8px; padding: 10px; color: #fff; font-size: 12px; outline: none; cursor: pointer; }
         select:focus, input[type="text"]:focus { border-color: #38bdf8; }
         .btn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
         .fix-btn { background-color: #030712; border: 1px solid #374151; border-radius: 8px; padding: 12px; color: #fbbf24; font-size: 12px; text-align: right; cursor: pointer; transition: 0.2s; }
         .fix-btn:hover { background-color: #1f2937; border-color: #fbbf24; }
-        .upload-box { border: 2px dashed #38bdf8; background-color: #030712; border-radius: 8px; padding: 20px; text-align: center; cursor: pointer; color: #38bdf8; font-size: 12px; }
+        .upload-box { border: 2px dashed #38bdf8; background-color: #030712; border-radius: 8px; padding: 20px; text-align: center; cursor: pointer; color: #38bdf8; font-size: 12px; display: block; }
         .chat-box { height: 260px; overflow-y: auto; background-color: #030712; border: 1px solid #1f2937; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
         .msg { padding: 10px 14px; border-radius: 12px; font-size: 12px; max-width: 80%; line-height: 1.5; white-space: pre-line; }
         .msg-bot { background-color: #1f2937; color: #e5e7eb; align-self: flex-start; border-top-right-radius: 0; }
@@ -41,43 +41,61 @@
     </header>
 
     <main>
-        <!-- اختيار المكونات كاملة -->
+        <!-- قسم المواصفات الشاملة (جميع البراندات) -->
         <section>
-            <h2>💻 اختر مواصفات حاسوبك (جميع البراندات):</h2>
+            <h2>💻 حدد مواصفات حاسوبك بدقة (كل البراندات):</h2>
             <div class="grid-2">
                 <div>
-                    <label>المعالج (CPU):</label>
+                    <label>المعالج (CPU - Intel & AMD):</label>
                     <select id="cpu">
-                        <option value="Intel Core i3">Intel Core i3</option>
-                        <option value="Intel Core i5" selected>Intel Core i5</option>
-                        <option value="Intel Core i7 / i9">Intel Core i7 / i9</option>
-                        <option value="AMD Ryzen 3 / 5 / 7">AMD Ryzen Series</option>
+                        <optgroup label="Intel Core الجيلات القديمة">
+                            <option value="Intel Core i3 / i5 (2nd - 7th Gen)">Intel Core (الجيل 2 إلى 7)</option>
+                        </optgroup>
+                        <optgroup label="Intel Core الجيلات الحديثة">
+                            <option value="Intel Core i3 (8th - 14th Gen)" selected>Intel Core i3 (الجيل 8 إلى 14)</option>
+                            <option value="Intel Core i5 (8th - 14th Gen)">Intel Core i5 (الجيل 8 إلى 14)</option>
+                            <option value="Intel Core i7 / i9 (10th - 14th Gen)">Intel Core i7 / i9 (فئات متقدمة)</option>
+                        </optgroup>
+                        <optgroup label="AMD Ryzen">
+                            <option value="AMD Ryzen 3 Series">AMD Ryzen 3 Series</option>
+                            <option value="AMD Ryzen 5 Series">AMD Ryzen 5 Series</option>
+                            <option value="AMD Ryzen 7 / 9 Series">AMD Ryzen 7 / 9 Series</option>
+                        </optgroup>
                     </select>
                 </div>
                 <div>
-                    <label>كارت الشاشة (GPU):</label>
+                    <label>كارت الشاشة (GPU - NVIDIA, AMD, Intel):</label>
                     <select id="gpu">
-                        <option value="Intel HD / Iris Xe" selected>Intel HD / Iris Xe</option>
-                        <option value="NVIDIA GTX Series">NVIDIA GTX (1050/1650/1660)</option>
-                        <option value="NVIDIA RTX Series">NVIDIA RTX (2060/3060/4060...)</option>
-                        <option value="AMD Radeon Series">AMD Radeon Series</option>
+                        <optgroup label="Intel مدمج">
+                            <option value="Intel HD / Iris Xe" selected>Intel HD / Iris Xe Graphics</option>
+                        </optgroup>
+                        <optgroup label="NVIDIA GeForce GTX">
+                            <option value="NVIDIA GTX 750Ti / 960 / 1050 / 1650">NVIDIA GTX (750Ti إلى 1650/1660)</option>
+                        </optgroup>
+                        <optgroup label="NVIDIA GeForce RTX">
+                            <option value="NVIDIA RTX 2060 / 3060 / 4060 فما فوق">NVIDIA RTX (2060 / 3060 / 4060 فما فوق)</option>
+                        </optgroup>
+                        <optgroup label="AMD Radeon">
+                            <option value="AMD Radeon RX 570 / 580 / 6600">AMD Radeon RX (570/580/6600)</option>
+                        </optgroup>
                     </select>
                 </div>
                 <div>
                     <label>الرام (RAM):</label>
                     <select id="ram">
+                        <option value="2 GB">2 GB</option>
                         <option value="4 GB">4 GB</option>
                         <option value="8 GB" selected>8 GB</option>
                         <option value="16 GB">16 GB</option>
-                        <option value="32 GB">32 GB</option>
+                        <option value="32 GB أو أعلى">32 GB أو أعلى</option>
                     </select>
                 </div>
                 <div>
                     <label>التخزين (Storage):</label>
                     <select id="storage">
-                        <option value="HDD">HDD (بطيء)</option>
-                        <option value="SSD" selected>SSD (سريع)</option>
-                        <option value="NVMe M.2">NVMe M.2 (فائق السرعة)</option>
+                        <option value="HDD تقليدي">HDD تقليدي (هارد ديسك)</option>
+                        <option value="SSD سريع" selected>SSD سريع</option>
+                        <option value="NVMe M.2 فائق السرعة">NVMe M.2 فائق السرعة</option>
                     </select>
                 </div>
             </div>
@@ -98,7 +116,7 @@
         <section>
             <h2>📸 إرفاق صورة لقطة شاشة (Screenshot):</h2>
             <label class="upload-box">
-                اضغط هنا لاختيار صورة من جهازك
+                اضغط هنا لاختيار صورة الخطأ من جهازك
                 <input type="file" id="img-file" accept="image/*" style="display:none;" onchange="uploadImage(event)">
             </label>
             <p id="img-status" style="font-size: 11px; color: #4ade80; margin-top: 8px; text-align: center;"></p>
@@ -109,11 +127,11 @@
             <h2>🤖 الشات المباشر مع الروبوت روكي (Rocky AI):</h2>
             <div class="chat-box" id="chat-box">
                 <div class="msg msg-bot">
-                    أهلاً بك يا لهادي! أنا **روكي (Rocky)**. اختر مواصفاتك بالأعلى واكتب لي أي مشكلة أو اضغط على الحلول السريعة لأعطيك الحل فوراً!
+                    أهلاً يا مستخدم، ما هو اسمك وما هي مواصفاتك لنجد حلاً سريعاً الآن وفوراً!
                 </div>
             </div>
             <div class="chat-input-container">
-                <input type="text" id="user-msg" placeholder="اكتب مشكلتك هنا يا لهادي..." onkeypress="if(event.key==='Enter') sendMsg()">
+                <input type="text" id="user-msg" placeholder="اكتب ردك هنا..." onkeypress="if(event.key==='Enter') sendMsg()">
                 <button type="button" class="send-btn" onclick="sendMsg()">إرسال</button>
             </div>
         </section>
@@ -125,10 +143,10 @@
         let imgName = "";
 
         const fixData = {
-            slow: "🤖 **روكي:** يا لهادي، لتسريع الجهاز: افحص قرص (C) ولا تدعه يمتلئ، وعطل برامج الإقلاع من Task Manager، واستخدم هارد SSD.",
-            games: "🎮 **روكي:** لرفع الـ FPS ومنع التقطيع: قم بتحديث تعريف كارت الشاشة لآخر إصدار، وقلل إعدادات الجرافيك والدقة داخل اللعبة.",
-            heat: "🔥 **روكي:** لخفض الحرارة: قم بتنظيف مروحة المعالج من الأتربة، وغير المعجون الحراري (Thermal Paste) بانتظام.",
-            net: "🌐 **روكي:** لمشاكل الإنترنت: أعد تشغيل الراوتر، وافتح CMD واكتب أمر (ipconfig /flushdns) لتنظيف الكاش."
+            slow: "🤖 **روكي:** لحل مشكلة البطء: افحص قرص النظام (C) وتأكد من خلوه من الامتلاء، عطل برامج الإقلاع التلقائي من Task Manager، واستخدم هارد SSD.",
+            games: "🎮 **روكي:** لحل تقطيع الألعاب: قم بتحديث تعريف كارت الشاشة لآخر إصدار، قلل إعدادات الجرافيك والدقة داخل اللعبة لرفع الـ FPS.",
+            heat: "🔥 **روكي:** لحل ارتفاع الحرارة: نظف مروحة المعالج من الأتربة المتراكمة، وقم بتغيير المعجون الحراري (Thermal Paste).",
+            net: "🌐 **روكي:** لحل مشاكل الإنترنت: أعد تشغيل الراوتر وافصله لـ 30 ثانية، واكتب أمر (ipconfig /flushdns) في موجه الأوامر CMD."
         };
 
         function quickFix(key) {
@@ -140,7 +158,7 @@
             if(file) {
                 imgName = file.name;
                 document.getElementById('img-status').innerText = "تم رفع الصورة: " + file.name;
-                addMsg('bot', "📸 **روكي:** تم استلام الصورة (" + file.name + ") بنجاح يا لهادي! جاري تحليل الخطأ.");
+                addMsg('bot', "📸 **روكي:** تم استلام الصورة (" + file.name + ") بنجاح! جاري فحص الخطأ وإيجاد الحل الفوري.");
             }
         }
 
@@ -155,9 +173,10 @@
             const cpu = document.getElementById('cpu').value;
             const gpu = document.getElementById('gpu').value;
             const ram = document.getElementById('ram').value;
+            const storage = document.getElementById('storage').value;
 
             setTimeout(() => {
-                let reply = "🤖 **روكي:** أهلاً بك يا لهادي! استقبلت سؤالك (" + txt + ") بناءً على مواصفاتك [" + cpu + " | " + gpu + " | " + ram + "]. أنصحك بإعادة تشغيل الجهاز وفحص ملفات النظام عبر CMD بـ sfc /scannow.";
+                let reply = "🤖 **روكي:** شكراً لتوضيحك! بناءً على اختيارك [ المعالج: " + cpu + " | الكارت: " + gpu + " | الرام: " + ram + " | التخزين: " + storage + " ]، أنصحك بإعادة تشغيل الجهاز وفحص ملفات النظام عبر أمر (sfc /scannow) لضمان الحل الفوري.";
                 addMsg('bot', reply);
             }, 300);
         }
