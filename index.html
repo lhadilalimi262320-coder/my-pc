@@ -1,83 +1,255 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My PC - أداة تشخيص الحاسوب</title>
+    <title id="page-title">My PC - أداة التشخيص الاحترافية</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 text-white min-h-screen flex flex-col justify-between p-4">
+<body class="bg-gray-900 text-white min-h-screen flex flex-col justify-between p-4 transition-all duration-300">
 
-    <!-- شريط العنوان العلوي -->
-    <header class="bg-gray-800 shadow-lg p-6 rounded-2xl border border-gray-700 text-center max-w-2xl mx-auto w-full mt-4">
-        <h1 class="text-3xl font-extrabold text-cyan-400 mb-1">My PC 💻</h1>
-        <p class="text-gray-400 text-sm">أداة التشخيص الذكي واختيار مواصفات جهازك</p>
+    <!-- شريط العنوان واللغات -->
+    <header class="bg-gray-800 shadow-lg p-4 rounded-2xl border border-gray-700 max-w-3xl mx-auto w-full mt-2 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div>
+            <h1 id="main-heading" class="text-2xl font-extrabold text-cyan-400">My PC 💻</h1>
+            <p id="sub-heading" class="text-gray-400 text-xs">أداة التشخيص المتقدمة لمواصفات وحالة حاسوبك</p>
+        </div>
+        <!-- زر تغيير اللغة -->
+        <div class="flex gap-2">
+            <button onclick="setLanguage('ar')" class="px-3 py-1 bg-cyan-600 hover:bg-cyan-500 rounded-lg text-xs font-bold transition">العربية</button>
+            <button onclick="setLanguage('fr')" class="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded-lg text-xs font-bold transition">Français</button>
+            <button onclick="setLanguage('en')" class="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded-lg text-xs font-bold transition">English</button>
+        </div>
     </header>
 
-    <!-- بطاقة الفحص الرئيسية -->
-    <main class="max-w-2xl mx-auto bg-gray-800 p-6 rounded-2xl shadow-2xl border border-gray-700 w-full my-6">
-        <h2 class="text-xl font-bold text-cyan-300 mb-4 border-b border-gray-700 pb-2">حدد مواصفات جهازك الحالية:</h2>
+    <!-- المحتوى الرئيسي -->
+    <main class="max-w-3xl mx-auto bg-gray-800 p-6 rounded-2xl shadow-2xl border border-gray-700 w-full my-4 space-y-6">
+        
+        <!-- قسم اختيار المواصفات -->
+        <div>
+            <h2 id="section-specs" class="text-lg font-bold text-cyan-300 mb-3 border-b border-gray-700 pb-2">اختر مواصفات جهازك الحالية:</h2>
 
-        <div class="space-y-4">
-            <!-- المعالج -->
-            <div>
-                <label class="block text-gray-300 text-sm mb-1 font-semibold">المعالج (CPU):</label>
-                <select id="cpu" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-white focus:outline-none focus:border-cyan-500">
-                    <option value="Intel Core i3 (10th Gen)">Intel Core i3 (10th Gen)</option>
-                    <option value="Intel Core i5 (12th Gen)">Intel Core i5 (12th Gen)</option>
-                    <option value="Intel Core i7 (13th Gen)">Intel Core i7 (13th Gen)</option>
-                    <option value="AMD Ryzen 5 5600X">AMD Ryzen 5 5600X</option>
-                </select>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- المعالجات (CPU) -->
+                <div>
+                    <label id="label-cpu" class="block text-gray-300 text-xs mb-1 font-semibold">المعالج (CPU):</label>
+                    <select id="cpu" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
+                        <optgroup label="Intel Core">
+                            <option value="Intel Core i3 10th Gen">Intel Core i3 (10th Gen)</option>
+                            <option value="Intel Core i3 12th/13th Gen">Intel Core i3 (12th/13th Gen)</option>
+                            <option value="Intel Core i5 10th Gen">Intel Core i5 (10th Gen)</option>
+                            <option value="Intel Core i5 12th/13th Gen">Intel Core i5 (12th/13th Gen)</option>
+                            <option value="Intel Core i7 12th/13th Gen">Intel Core i7 (12th/13th Gen)</option>
+                        </optgroup>
+                        <optgroup label="AMD Ryzen">
+                            <option value="AMD Ryzen 3">AMD Ryzen 3</option>
+                            <option value="AMD Ryzen 5 3600/5600X">AMD Ryzen 5 (3600 / 5600X)</option>
+                            <option value="AMD Ryzen 7">AMD Ryzen 7</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <!-- كروت الشاشة (GPU) -->
+                <div>
+                    <label id="label-gpu" class="block text-gray-300 text-xs mb-1 font-semibold">كارت الشاشة (GPU):</label>
+                    <select id="gpu" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
+                        <optgroup label="Intel Integrated">
+                            <option value="Intel HD Graphics 630">Intel HD Graphics 630</option>
+                            <option value="Intel Iris Xe Graphics">Intel Iris Xe Graphics</option>
+                        </optgroup>
+                        <optgroup label="NVIDIA GeForce">
+                            <option value="NVIDIA GTX 1050 / 1650">NVIDIA GTX 1050 / 1650</option>
+                            <option value="NVIDIA RTX 3060 / 3070">NVIDIA RTX 3060 / 3070</option>
+                            <option value="NVIDIA RTX 4060 / 4070">NVIDIA RTX 4060 / 4070</option>
+                        </optgroup>
+                        <optgroup label="AMD Radeon">
+                            <option value="AMD Radeon RX 580 / 5700">AMD Radeon RX 580 / 5700</option>
+                            <option value="AMD Radeon RX 6600 / 6700">AMD Radeon RX 6600 / 6700</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <!-- الرام (RAM) -->
+                <div>
+                    <label id="label-ram" class="block text-gray-300 text-xs mb-1 font-semibold">الذاكرة العشوائية (RAM):</label>
+                    <select id="ram" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
+                        <option value="4 GB">4 GB</option>
+                        <option value="8 GB" selected>8 GB</option>
+                        <option value="16 GB">16 GB</option>
+                        <option value="32 GB">32 GB أو أعلى</option>
+                    </select>
+                </div>
+
+                <!-- التخزين (Storage) -->
+                <div>
+                    <label id="label-storage" class="block text-gray-300 text-xs mb-1 font-semibold">نوع التخزين (Storage):</label>
+                    <select id="storage" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
+                        <option value="HDD 500GB / 1TB">HDD (هارد ديسك عادي)</option>
+                        <option value="SSD 256GB / 512GB">SSD (سريع)</option>
+                        <option value="NVMe M.2 SSD">NVMe M.2 (فائق السرعة)</option>
+                    </select>
+                </div>
             </div>
 
-            <!-- كارت الشاشة -->
-            <div>
-                <label class="block text-gray-300 text-sm mb-1 font-semibold">كارت الشاشة (GPU):</label>
-                <select id="gpu" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-white focus:outline-none focus:border-cyan-500">
-                    <option value="Intel HD Graphics 630">Intel HD Graphics 630</option>
-                    <option value="NVIDIA GTX 1650">NVIDIA GTX 1650</option>
-                    <option value="NVIDIA RTX 3060">NVIDIA RTX 3060</option>
-                </select>
-            </div>
-
-            <!-- الرام -->
-            <div>
-                <label class="block text-gray-300 text-sm mb-1 font-semibold">الذاكرة العشوائية (RAM):</label>
-                <select id="ram" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-white focus:outline-none focus:border-cyan-500">
-                    <option value="8 GB" selected>8 GB</option>
-                    <option value="16 GB">16 GB</option>
-                    <option value="32 GB">32 GB</option>
-                </select>
-            </div>
-
-            <!-- زر التفاعل -->
-            <button onclick="runDiagnostic()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-gray-900 font-extrabold p-3 rounded-xl shadow-lg transition duration-200 mt-4">
-                إجراء فحص وتشخيص سريع 🔍
+            <!-- زر التشخيص -->
+            <button id="btn-diagnose" onclick="runDiagnostic()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-gray-900 font-extrabold p-3 rounded-xl shadow-lg transition duration-200 mt-5 text-sm">
+                🔍 ابدأ الفحص والتشخيص الشامل
             </button>
         </div>
 
-        <!-- نتيجة التفاعل -->
-        <div id="result-box" class="hidden mt-6 p-4 bg-gray-900 border border-cyan-500/40 rounded-xl text-center">
-            <h3 class="text-lg font-bold text-cyan-400 mb-1">نتيجة التقرير:</h3>
-            <p id="result-text" class="text-gray-300"></p>
+        <!-- قسم حل المشاكل الشائعة -->
+        <div class="border-t border-gray-700 pt-4">
+            <h2 id="section-trouble" class="text-lg font-bold text-yellow-400 mb-3">🛠️ حل المشاكل الشائعة (Troubleshooting):</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button onclick="showFix('slow')" id="fix-btn-1" class="p-3 bg-gray-900 hover:bg-gray-700 border border-gray-700 rounded-xl text-left text-xs transition">⚠️ جهازي بطيء جداً عند الإقلاع أو الاستخدام</button>
+                <button onclick="showFix('games')" id="fix-btn-2" class="p-3 bg-gray-900 hover:bg-gray-700 border border-gray-700 rounded-xl text-left text-xs transition">🎮 الألعاب تقطع أو تعاني من Lag شديد</button>
+                <button onclick="showFix('heat')" id="fix-btn-3" class="p-3 bg-gray-900 hover:bg-gray-700 border border-gray-700 rounded-xl text-left text-xs transition">🔥 ارتفاع حرارة المعالج أو المروحة تصدر صوتاً</button>
+                <button onclick="showFix('net')" id="fix-btn-4" class="p-3 bg-gray-900 hover:bg-gray-700 border border-gray-700 rounded-xl text-left text-xs transition">🌐 انقطاع متكرر أو بطء في الإنترنت</button>
+            </div>
+        </div>
+
+        <!-- صندوق النتائج والحلول -->
+        <div id="result-box" class="hidden p-4 bg-gray-900 border border-cyan-500/40 rounded-xl text-center space-y-2">
+            <h3 id="result-title" class="text-base font-bold text-cyan-400">تقرير حالة النظام:</h3>
+            <p id="result-text" class="text-gray-300 text-xs leading-relaxed"></p>
         </div>
     </main>
 
     <!-- الحقوق -->
-    <footer class="text-center p-4 text-gray-500 text-xs">
+    <footer class="text-center text-gray-500 text-xs py-2">
         جميع الحقوق محفوظة © My PC 2026
     </footer>
 
+    <!-- النصوص وقواميس اللغات والسكربتات التفاعلية -->
     <script>
+        const translations = {
+            ar: {
+                title: "My PC - أداة التشخيص الاحترافية",
+                mainHeading: "My PC 💻",
+                subHeading: "أداة التشخيص المتقدمة لمواصفات وحالة حاسوبك",
+                specs: "اختر مواصفات جهازك الحالية:",
+                cpu: "المعالج (CPU):",
+                gpu: "كارت الشاشة (GPU):",
+                ram: "الذاكرة العشوائية (RAM):",
+                storage: "نوع التخزين (Storage):",
+                btn: "🔍 ابدأ الفحص والتشخيص الشامل",
+                trouble: "🛠️ حل المشاكل الشائعة (Troubleshooting):",
+                fix1: "⚠️ جهازي بطيء جداً عند الإقلاع أو الاستخدام",
+                fix2: "🎮 الألعاب تقطع أو تعاني من Lag شديد",
+                fix3: "🔥 ارتفاع حرارة المعالج أو المروحة تصدر صوتاً",
+                fix4: "🌐 انقطاع متكرر أو بطء في الإنترنت",
+                reportTitle: "تقرير حالة النظام والمواصفات:",
+                solutions: {
+                    slow: "💡 الحل لمشكلة البطء: يُنصح بترقية التخزين إلى SSD إذا كنت تستخدم HDD تقليدي، وتعطيل برامج البدء غير الضرورية من مدير المهام (Task Manager).",
+                    games: "💡 الحل لمشكلة الألعاب: تأكد من تحديث تعريفات كارت الشاشة، وخفض دقة الشاشة (Resolution) داخل الألعاب، وإغلاق المتصفح وبرامج الخلفية لتفريغ الرام.",
+                    heat: "💡 الحل لمشكلة الحرارة: قم بتنظيف الجهاز من الغبار وتغيير المعجون الحراري (Thermal Paste) للمعالج بانتظام.",
+                    net: "💡 الحل لمشكلة الإنترنت: جرب إعادة تشغيل الراوتر، أو تأكد من سلامة تعريف كارت الشبكة (Wi-Fi/Ethernet)."
+                }
+            },
+            fr: {
+                title: "My PC - Outil de Diagnostic Professionnel",
+                mainHeading: "My PC 💻",
+                subHeading: "Outil de diagnostic avancé pour les spécifications de votre PC",
+                specs: "Sélectionnez les spécifications de votre PC :",
+                cpu: "Processeur (CPU) :",
+                gpu: "Carte Graphique (GPU) :",
+                ram: "Mémoire Vive (RAM) :",
+                storage: "Stockage :",
+                btn: "🔍 Lancer le diagnostic complet",
+                trouble: "🛠️ Résolution des problèmes courants :",
+                fix1: "⚠️ Mon PC est très lent au démarrage ou à l'usage",
+                fix2: "🎮 Les jeux laguent ou chutent en images par seconde",
+                fix3: "🔥 Surchauffe du processeur ou bruit excessif du ventilateur",
+                fix4: "🌐 Problèmes ou lenteurs de connexion internet",
+                reportTitle: "Rapport de l'état du système :",
+                solutions: {
+                    slow: "💡 Solution lenteur : Envisagez de passer à un SSD si vous utilisez un HDD, et désactivez les applications de démarrage inutiles.",
+                    games: "💡 Solution jeux : Mettez à jour vos pilotes graphiques, réduisez la résolution en jeu et fermez les applications en arrière-plan.",
+                    heat: "💡 Solution surchauffe : Nettoyez la poussière et remplacez la pâte thermique du processeur.",
+                    net: "💡 Solution réseau : Redémarrez votre routeur et vérifiez les pilotes Wi-Fi."
+                }
+            },
+            en: {
+                title: "My PC - Professional Diagnostic Tool",
+                mainHeading: "My PC 💻",
+                subHeading: "Advanced diagnostic tool for your PC specs and health",
+                specs: "Select your current PC specifications:",
+                cpu: "Processor (CPU):",
+                gpu: "Graphics Card (GPU):",
+                ram: "Memory (RAM):",
+                storage: "Storage Type:",
+                btn: "🔍 Run Full System Diagnostic",
+                trouble: "🛠️ Common Troubleshooting & Fixes:",
+                fix1: "⚠️ My PC is very slow on startup or during use",
+                fix2: "🎮 Games lag or suffer from severe frame drops",
+                fix3: "🔥 CPU overheating or loud fan noise",
+                fix4: "🌐 Frequent internet disconnection or slowness",
+                reportTitle: "System Status Report:",
+                solutions: {
+                    slow: "💡 Slow PC Fix: Upgrade to an SSD if you're using an HDD, and disable unnecessary startup apps in Task Manager.",
+                    games: "💡 Gaming Lag Fix: Update your GPU drivers, lower game resolutions, and close heavy background background apps to free up RAM.",
+                    heat: "💡 Overheating Fix: Clean dust from internal components and reapply thermal paste to your CPU.",
+                    net: "💡 Internet Fix: Restart your router and check your network adapter drivers."
+                }
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+            
+            document.getElementById('html-root').setAttribute('lang', lang);
+            document.getElementById('html-root').setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            
+            document.getElementById('page-title').innerText = t.title;
+            document.getElementById('main-heading').innerText = t.mainHeading;
+            document.getElementById('sub-heading').innerText = t.subHeading;
+            document.getElementById('section-specs').innerText = t.specs;
+            document.getElementById('label-cpu').innerText = t.cpu;
+            document.getElementById('label-gpu').innerText = t.gpu;
+            document.getElementById('label-ram').innerText = t.ram;
+            document.getElementById('label-storage').innerText = t.storage;
+            document.getElementById('btn-diagnose').innerText = t.btn;
+            document.getElementById('section-trouble').innerText = t.trouble;
+            document.getElementById('fix-btn-1').innerText = t.fix1;
+            document.getElementById('fix-btn-2').innerText = t.fix2;
+            document.getElementById('fix-btn-3').innerText = t.fix3;
+            document.getElementById('fix-btn-4').innerText = t.fix4;
+            document.getElementById('result-title').innerText = t.reportTitle;
+            
+            document.getElementById('result-box').classList.add('hidden');
+        }
+
         function runDiagnostic() {
             const cpu = document.getElementById('cpu').value;
             const gpu = document.getElementById('gpu').value;
             const ram = document.getElementById('ram').value;
+            const storage = document.getElementById('storage').value;
 
             const box = document.getElementById('result-box');
             const text = document.getElementById('result-text');
 
-            text.innerText = `تم اختيار: (${cpu} | ${gpu} | ${ram}). الجهاز جاهز ومستقر لتشغيل النظام والمهام اليومية بنجاح!`;
+            let msg = "";
+            if (currentLang === 'ar') {
+                msg = `المواصفات المحددة: [ المعالج: ${cpu} | كارت الشاشة: ${gpu} | الرام: ${ram} | التخزين: ${storage} ].\n✨ تقييم الأداء: جهازك ممتاز للعمل اليومي وتصفح الإنترنت والتطبيقات الخفيفة، ومستقر تماماً!`;
+            } else if (currentLang === 'fr') {
+                msg = `Spécifications : [ CPU: ${cpu} | GPU: ${gpu} | RAM: ${ram} | Stockage: ${storage} ].\n✨ Évaluation : Votre système est stable et adapté aux tâches quotidiennes.`;
+            } else {
+                msg = `Selected Specs: [ CPU: ${cpu} | GPU: ${gpu} | RAM: ${ram} | Storage: ${storage} ].\n✨ Performance Review: Your system is stable and well-suited for daily tasks and lightweight apps.`;
+            }
+
+            text.innerText = msg;
+            box.classList.remove('hidden');
+        }
+
+        function showFix(type) {
+            const box = document.getElementById('result-box');
+            const text = document.getElementById('result-text');
+            const t = translations[currentLang];
+
+            text.innerText = t.solutions[type];
             box.classList.remove('hidden');
         }
     </script>
