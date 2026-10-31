@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My PC - روبوت التشخيص روكي AI</title>
+    <title>My PC - أرشيف الكروت والمعالجات وروكي AI</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
         body { background-color: #0b0f19; color: #f3f4f6; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; min-height: 100vh; }
-        header { background-color: #111827; border: 1px solid #1f2937; padding: 15px; border-radius: 12px; max-width: 800px; margin: 0 auto 20px auto; width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        header { background-color: #111827; border: 1px solid #1f2937; padding: 15px; border-radius: 12px; max-width: 850px; margin: 0 auto 20px auto; width: 100%; display: flex; justify-content: space-between; align-items: center; }
         h1 { color: #38bdf8; font-size: 20px; }
         .sub { color: #9ca3af; font-size: 12px; }
-        main { max-width: 800px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 20px; }
+        main { max-width: 850px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 20px; }
         section { background-color: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 18px; }
         h2 { font-size: 15px; color: #38bdf8; margin-bottom: 12px; border-bottom: 1px solid #1f2937; padding-bottom: 8px; }
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
-        label { display: block; font-size: 12px; color: #9ca3af; margin-bottom: 5px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+        label { display: block; font-size: 12px; color: #9ca3af; margin-bottom: 5px; font-weight: bold; }
         select, input[type="text"] { width: 100%; background-color: #030712; border: 1px solid #374151; border-radius: 8px; padding: 10px; color: #fff; font-size: 12px; outline: none; cursor: pointer; }
         select:focus, input[type="text"]:focus { border-color: #38bdf8; }
         .btn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
         .fix-btn { background-color: #030712; border: 1px solid #374151; border-radius: 8px; padding: 12px; color: #fbbf24; font-size: 12px; text-align: right; cursor: pointer; transition: 0.2s; }
         .fix-btn:hover { background-color: #1f2937; border-color: #fbbf24; }
         .upload-box { border: 2px dashed #38bdf8; background-color: #030712; border-radius: 8px; padding: 20px; text-align: center; cursor: pointer; color: #38bdf8; font-size: 12px; display: block; }
-        .chat-box { height: 260px; overflow-y: auto; background-color: #030712; border: 1px solid #1f2937; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
-        .msg { padding: 10px 14px; border-radius: 12px; font-size: 12px; max-width: 80%; line-height: 1.5; white-space: pre-line; }
+        .chat-box { height: 280px; overflow-y: auto; background-color: #030712; border: 1px solid #1f2937; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+        .msg { padding: 10px 14px; border-radius: 12px; font-size: 12px; max-width: 85%; line-height: 1.5; white-space: pre-line; }
         .msg-bot { background-color: #1f2937; color: #e5e7eb; align-self: flex-start; border-top-right-radius: 0; }
         .msg-user { background-color: #0284c7; color: #fff; align-self: flex-end; border-top-left-radius: 0; }
         .chat-input-container { display: flex; gap: 8px; margin-top: 10px; }
@@ -35,67 +35,87 @@
 
     <header>
         <div>
-            <h1>My PC 💻 (روكي AI)</h1>
-            <p class="sub">منصة التشخيص والمساعد الذكي روكي</p>
+            <h1>My PC 💻 (الأرشيف الشامل وروكي AI)</h1>
+            <p class="sub">أرشيف المعالجات وكروت الشاشة من التأسيس إلى يومنا هذا</p>
         </div>
     </header>
 
     <main>
-        <!-- قسم المواصفات الشاملة (جميع البراندات) -->
+        <!-- أرشيف المعالجات وكروت الشاشة الشامل -->
         <section>
-            <h2>💻 حدد مواصفات حاسوبك بدقة (كل البراندات):</h2>
+            <h2>💻 الأرشيف التاريخي الكامل للقطع (من البداية حتى اليوم):</h2>
             <div class="grid-2">
                 <div>
-                    <label>المعالج (CPU - Intel & AMD):</label>
+                    <label>المعالج (CPU History & Modern):</label>
                     <select id="cpu">
-                        <optgroup label="Intel Core الجيلات القديمة">
-                            <option value="Intel Core i3 / i5 (2nd - 7th Gen)">Intel Core (الجيل 2 إلى 7)</option>
+                        <optgroup label="Intel الأجيال التاريخية القديمة">
+                            <option value="Intel Pentium / Celeron (العهد القديم)">Intel Pentium / Celeron (التاريخي)</option>
+                            <option value="Intel Core 2 Duo / Quad">Intel Core 2 Duo / Quad</option>
                         </optgroup>
-                        <optgroup label="Intel Core الجيلات الحديثة">
-                            <option value="Intel Core i3 (8th - 14th Gen)" selected>Intel Core i3 (الجيل 8 إلى 14)</option>
-                            <option value="Intel Core i5 (8th - 14th Gen)">Intel Core i5 (الجيل 8 إلى 14)</option>
-                            <option value="Intel Core i7 / i9 (10th - 14th Gen)">Intel Core i7 / i9 (فئات متقدمة)</option>
+                        <optgroup label="Intel Core أجيال البداية">
+                            <option value="Intel Core i3 / i5 / i7 (1st to 4th Gen)">Intel Core (الجيل 1 إلى 4)</option>
+                            <option value="Intel Core i3 / i5 / i7 (5th to 7th Gen)">Intel Core (الجيل 5 إلى 7)</option>
                         </optgroup>
-                        <optgroup label="AMD Ryzen">
-                            <option value="AMD Ryzen 3 Series">AMD Ryzen 3 Series</option>
-                            <option value="AMD Ryzen 5 Series">AMD Ryzen 5 Series</option>
-                            <option value="AMD Ryzen 7 / 9 Series">AMD Ryzen 7 / 9 Series</option>
+                        <optgroup label="Intel Core الأجيال الحديثة">
+                            <option value="Intel Core i3 / i5 / i7 / i9 (8th to 11th Gen)" selected>Intel Core (الجيل 8 إلى 11)</option>
+                            <option value="Intel Core i3 / i5 / i7 / i9 (12th to 14th Gen)">Intel Core (الجيل 12 إلى 14)</option>
+                            <option value="Intel Core Ultra (Series 1 & 2)">Intel Core Ultra (أحدث إصدار)</option>
+                        </optgroup>
+                        <optgroup label="AMD المعالجات التاريخية والحديثة">
+                            <option value="AMD Athlon / Phenom Series">AMD Athlon / Phenom (التاريخي)</option>
+                            <option value="AMD FX Series (FX-6300 / 8350)">AMD FX Series</option>
+                            <option value="AMD Ryzen 3 / 5 / 7 / 9 (1st to 3rd Gen)">AMD Ryzen (الجيل 1 إلى 3)</option>
+                            <option value="AMD Ryzen 5000 / 7000 / 9000 Series">AMD Ryzen (سلاسل 5000 و 7000 و 9000)</option>
                         </optgroup>
                     </select>
                 </div>
+
                 <div>
-                    <label>كارت الشاشة (GPU - NVIDIA, AMD, Intel):</label>
+                    <label>كارت الشاشة (GPU History & Modern):</label>
                     <select id="gpu">
-                        <optgroup label="Intel مدمج">
-                            <option value="Intel HD / Iris Xe" selected>Intel HD / Iris Xe Graphics</option>
+                        <optgroup label="الإصدارات التاريخية الأولى">
+                            <option value="3dfx Voodoo / Nvidia Riva TNT (التاريخ العتيق)">3dfx Voodoo / Nvidia Riva TNT</option>
+                            <option value="NVIDIA GeForce 2 / 4 / 6000 / 8000 Series">NVIDIA GeForce (سلاسل 2 إلى 8000)</option>
+                            <option value="ATI Radeon 9000 / HD 2000 / HD 4000 Series">ATI / AMD Radeon (الإصدارات الأولى)</option>
                         </optgroup>
-                        <optgroup label="NVIDIA GeForce GTX">
-                            <option value="NVIDIA GTX 750Ti / 960 / 1050 / 1650">NVIDIA GTX (750Ti إلى 1650/1660)</option>
+                        <optgroup label="سلاسل النقلة النوعية">
+                            <option value="NVIDIA GeForce GTX 200 / 400 / 600 / 700 Series">NVIDIA GTX (سلاسل 200 إلى 700)</option>
+                            <option value="NVIDIA GeForce GTX 900 Series (GTX 960/970/980)">NVIDIA GTX 900 Series</option>
+                            <option value="AMD Radeon HD 7000 / R9 200 / R9 300 Series">AMD Radeon (HD 7000 إلى R9)</option>
                         </optgroup>
-                        <optgroup label="NVIDIA GeForce RTX">
-                            <option value="NVIDIA RTX 2060 / 3060 / 4060 فما فوق">NVIDIA RTX (2060 / 3060 / 4060 فما فوق)</option>
+                        <optgroup label="العصر الذهبي والحديث">
+                            <option value="NVIDIA GeForce GTX 10 Series (1050 / 1060 / 1080)">NVIDIA GTX 10 Series (الأسطورية)</option>
+                            <option value="NVIDIA GeForce GTX 16 Series (1650 / 1660 Super)" selected>NVIDIA GTX 16 Series (1650 / 1660)</option>
+                            <option value="NVIDIA GeForce RTX 20 Series (2060/2070/2080)">NVIDIA RTX 20 Series</option>
+                            <option value="NVIDIA GeForce RTX 30 Series (3060/3070/3090)">NVIDIA RTX 30 Series</option>
+                            <option value="NVIDIA GeForce RTX 40 Series (4060/4080/4090)">NVIDIA RTX 40 Series</option>
+                            <option value="NVIDIA GeForce RTX 50 Series (أحدث إصدار)">NVIDIA RTX 50 Series (الجيل الأحدث)</option>
                         </optgroup>
-                        <optgroup label="AMD Radeon">
-                            <option value="AMD Radeon RX 570 / 580 / 6600">AMD Radeon RX (570/580/6600)</option>
+                        <optgroup label="AMD Radeon الحديثة & Intel Arc">
+                            <option value="AMD Radeon RX 400 / 500 / Vega Series">AMD Radeon RX (400 / 500 / Vega)</option>
+                            <option value="AMD Radeon RX 5000 / 6000 / 7000 Series">AMD Radeon RX (5000 إلى 7000)</option>
+                            <option value="Intel Iris Xe & Intel Arc A750 / A770">Intel Iris Xe & Arc Graphics</option>
                         </optgroup>
                     </select>
                 </div>
+
                 <div>
                     <label>الرام (RAM):</label>
                     <select id="ram">
-                        <option value="2 GB">2 GB</option>
-                        <option value="4 GB">4 GB</option>
-                        <option value="8 GB" selected>8 GB</option>
-                        <option value="16 GB">16 GB</option>
-                        <option value="32 GB أو أعلى">32 GB أو أعلى</option>
+                        <option value="DDR1 / DDR2 (ذات سعات صغيرة)">DDR1 / DDR2 (تاريخي)</option>
+                        <option value="4 GB DDR3/DDR4">4 GB</option>
+                        <option value="8 GB DDR3/DDR4" selected>8 GB</option>
+                        <option value="16 GB DDR4/DDR5">16 GB</option>
+                        <option value="32 GB / 64 GB DDR4/DDR5">32 GB / 64 GB أو أعلى</option>
                     </select>
                 </div>
+
                 <div>
                     <label>التخزين (Storage):</label>
                     <select id="storage">
-                        <option value="HDD تقليدي">HDD تقليدي (هارد ديسك)</option>
-                        <option value="SSD سريع" selected>SSD سريع</option>
-                        <option value="NVMe M.2 فائق السرعة">NVMe M.2 فائق السرعة</option>
+                        <option value="IDE / HDD ميكانيكي قديم">IDE / HDD ميكانيكي قديم</option>
+                        <option value="SSD SATA سريع" selected>SSD SATA سريع</option>
+                        <option value="NVMe M.2 / PCIe 4.0 & 5.0">NVMe M.2 / PCIe 4.0 & 5.0 (أحدث وأسرع)</option>
                     </select>
                 </div>
             </div>
@@ -103,7 +123,7 @@
 
         <!-- حلول سريعة -->
         <section>
-            <h2 style="color: #fbbf24;">🛠️ حلول سريعة للمشاكل (اضغط للحل الفوري):</h2>
+            <h2 style="color: #fbbf24;">🛠️ حلول سريعة للمشاكل (استجابة فورية):</h2>
             <div class="btn-grid">
                 <button type="button" class="fix-btn" onclick="quickFix('slow')">⚠️ بطء النظام والإقلاع</button>
                 <button type="button" class="fix-btn" onclick="quickFix('games')">🎮 تقطيع الألعاب والـ FPS</button>
@@ -131,7 +151,7 @@
                 </div>
             </div>
             <div class="chat-input-container">
-                <input type="text" id="user-msg" placeholder="اكتب ردك هنا..." onkeypress="if(event.key==='Enter') sendMsg()">
+                <input type="text" id="user-msg" placeholder="اكتب ردك أو مشكلتك هنا..." onkeypress="if(event.key==='Enter') sendMsg()">
                 <button type="button" class="send-btn" onclick="sendMsg()">إرسال</button>
             </div>
         </section>
@@ -176,7 +196,7 @@
             const storage = document.getElementById('storage').value;
 
             setTimeout(() => {
-                let reply = "🤖 **روكي:** شكراً لتوضيحك! بناءً على اختيارك [ المعالج: " + cpu + " | الكارت: " + gpu + " | الرام: " + ram + " | التخزين: " + storage + " ]، أنصحك بإعادة تشغيل الجهاز وفحص ملفات النظام عبر أمر (sfc /scannow) لضمان الحل الفوري.";
+                let reply = "🤖 **روكي:** شكراً لتوضيحك! بناءً على اختيارك الأرشيفي [ المعالج: " + cpu + " | الكارت: " + gpu + " | الرام: " + ram + " | التخزين: " + storage + " ]، أنصحك بإعادة تشغيل الجهاز وفحص ملفات النظام عبر أمر (sfc /scannow) لضمان الحل الفوري.";
                 addMsg('bot', reply);
             }, 300);
         }
