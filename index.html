@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My PC - روبي & روكي المساعد الذكي</title>
+    <title>My PC - روكي والمواصفات الشاملة</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -24,9 +24,9 @@
             
             <!-- Language Selector -->
             <div class="flex bg-gray-800 p-1 rounded-xl border border-gray-700 text-xs font-semibold">
-                <button onclick="setLanguage('ar')" id="btn-ar" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white transition">العربية</button>
-                <button onclick="setLanguage('fr')" id="btn-fr" class="px-3 py-1.5 rounded-lg hover:text-cyan-400 text-gray-400 transition">Français</button>
-                <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1.5 rounded-lg hover:text-cyan-400 text-gray-400 transition">English</button>
+                <button type="button" onclick="setLanguage('ar')" id="btn-ar" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white transition">العربية</button>
+                <button type="button" onclick="setLanguage('fr')" id="btn-fr" class="px-3 py-1.5 rounded-lg hover:text-cyan-400 text-gray-400 transition">Français</button>
+                <button type="button" onclick="setLanguage('en')" id="btn-en" class="px-3 py-1.5 rounded-lg hover:text-cyan-400 text-gray-400 transition">English</button>
             </div>
         </div>
     </header>
@@ -34,50 +34,79 @@
     <!-- Main Container -->
     <main class="max-w-4xl mx-auto w-full p-4 md:p-6 space-y-6 my-2">
         
-        <!-- Hardware Specs Selection -->
+        <!-- Hardware Specs Selection (Expanded) -->
         <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-xl">
             <h2 class="text-base font-bold text-cyan-400 mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
-                <i class="fa-solid fa-microchip"></i> حدد مواصفات حاسوبك الحالية:
+                <i class="fa-solid fa-microchip"></i> حدد مواصفات حاسوبك بكل دقة (قائمة شاملة):
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- CPU -->
+                <!-- CPU (Expanded) -->
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1">المعالج (CPU):</label>
                     <select id="cpu" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
-                        <option value="Intel Core i3 10th Gen">Intel Core i3 (10th Gen)</option>
-                        <option value="Intel Core i5" selected>Intel Core i5</option>
-                        <option value="Intel Core i7">Intel Core i7</option>
-                        <option value="AMD Ryzen 5">AMD Ryzen 5</option>
+                        <optgroup label="Intel Core الجيلات القديمة">
+                            <option value="Intel Core i3 / i5 (2nd - 7th Gen)">Intel Core (الجيل 2 إلى 7)</option>
+                        </optgroup>
+                        <optgroup label="Intel Core الجيلات الحديثة">
+                            <option value="Intel Core i3 (8th - 10th Gen)" selected>Intel Core i3 (الجيل 8 إلى 10)</option>
+                            <option value="Intel Core i3 (11th - 14th Gen)">Intel Core i3 (الجيل 11 إلى 14)</option>
+                            <option value="Intel Core i5 (8th - 11th Gen)">Intel Core i5 (الجيل 8 إلى 11)</option>
+                            <option value="Intel Core i5 (12th - 14th Gen)">Intel Core i5 (الجيل 12 إلى 14)</option>
+                            <option value="Intel Core i7 / i9 (10th - 14th Gen)">Intel Core i7 / i9 (فئات متقدمة)</option>
+                        </optgroup>
+                        <optgroup label="AMD Ryzen">
+                            <option value="AMD Ryzen 3 Series">AMD Ryzen 3 Series</option>
+                            <option value="AMD Ryzen 5 (3600 / 5600X / 7600)">AMD Ryzen 5 (إصدارات شهيرة)</option>
+                            <option value="AMD Ryzen 7 / 9 Series">AMD Ryzen 7 / 9 Series (أداء عالي)</option>
+                        </optgroup>
                     </select>
                 </div>
 
-                <!-- GPU -->
+                <!-- GPU (Expanded) -->
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1">كارت الشاشة (GPU):</label>
                     <select id="gpu" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
-                        <option value="Intel HD Graphics 630" selected>Intel HD Graphics 630</option>
-                        <option value="NVIDIA GTX 1650">NVIDIA GTX 1650</option>
-                        <option value="NVIDIA RTX 3060">NVIDIA RTX 3060</option>
+                        <optgroup label="Intel مدمج (Integrated)">
+                            <option value="Intel HD Graphics 520/530/630" selected>Intel HD Graphics 520 / 530 / 630</option>
+                            <option value="Intel Iris Xe Graphics">Intel Iris Xe Graphics</option>
+                        </optgroup>
+                        <optgroup label="NVIDIA GeForce GTX">
+                            <option value="NVIDIA GeForce GTX 750 Ti / 960">NVIDIA GTX 750 Ti / 960</option>
+                            <option value="NVIDIA GeForce GTX 1050 / 1050 Ti">NVIDIA GTX 1050 / 1050 Ti</option>
+                            <option value="NVIDIA GeForce GTX 1650 / 1660 Super">NVIDIA GTX 1650 / 1660 Super</option>
+                        </optgroup>
+                        <optgroup label="NVIDIA GeForce RTX">
+                            <option value="NVIDIA GeForce RTX 2060 / 2070">NVIDIA RTX 2060 / 2070</option>
+                            <option value="NVIDIA GeForce RTX 3060 / 3070 / 3080">NVIDIA RTX 3060 / 3070 / 3080</option>
+                            <option value="NVIDIA GeForce RTX 4060 / 4070 / 4090">NVIDIA RTX 40 series (4060 فما فوق)</option>
+                        </optgroup>
+                        <optgroup label="AMD Radeon">
+                            <option value="AMD Radeon RX 570 / 580 / 5500XT">AMD Radeon RX 570 / 580 / 5500XT</option>
+                            <option value="AMD Radeon RX 6600 / 6700 XT">AMD Radeon RX 6600 / 6700 XT</option>
+                        </optgroup>
                     </select>
                 </div>
 
-                <!-- RAM -->
+                <!-- RAM (Expanded) -->
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1">الذاكرة العشوائية (RAM):</label>
                     <select id="ram" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
-                        <option value="4 GB">4 GB</option>
-                        <option value="8 GB" selected>8 GB</option>
-                        <option value="16 GB">16 GB</option>
+                        <option value="2 GB DDR2/DDR3">2 GB (قديم جداً)</option>
+                        <option value="4 GB DDR3/DDR4">4 GB</option>
+                        <option value="8 GB DDR3/DDR4" selected>8 GB (ممتاز للاستخدام اليومي)</option>
+                        <option value="16 GB DDR4/DDR5">16 GB (احترافي للألعاب والأداء)</option>
+                        <option value="32 GB أو أعلى DDR4/DDR5">32 GB أو أعلى (أداء فائق)</option>
                     </select>
                 </div>
 
-                <!-- Storage -->
+                <!-- Storage (Expanded) -->
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1">نوع التخزين (Storage):</label>
                     <select id="storage" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
-                        <option value="HDD">HDD تقليدي</option>
-                        <option value="SSD" selected>SSD سريع</option>
+                        <option value="HDD 320GB / 500GB / 1TB (بطيء)">HDD تقليدي (هارد ديسك ميكانيكي)</option>
+                        <option value="SSD SATA 256GB / 512GB (سريع)" selected>SSD SATA (سريع)</option>
+                        <option value="NVMe M.2 SSD 512GB / 1TB (فائق السرعة)">NVMe M.2 SSD (فائق السرعة جداً)</option>
                     </select>
                 </div>
             </div>
@@ -148,8 +177,8 @@
                     <div class="w-7 h-7 rounded-lg bg-cyan-600 flex items-center justify-center text-white shrink-0 font-bold">
                         <i class="fa-solid fa-robot"></i>
                     </div>
-                    <div id="welcome-msg" class="bg-gray-800 border border-gray-700 p-3 rounded-2xl rounded-tr-none text-gray-200 leading-relaxed max-w-lg">
-                        أهلاً بك يا لهادي! أنا **روكي (Rocky)** مساعدك الذكي لتشخيص أعطال وحواسيب الألعاب. اكتب لي مشكلتك هنا أو اختر من الحلول السريعة وسأعطيك الحل الفوري!
+                    <div class="bg-gray-800 border border-gray-700 p-3 rounded-2xl rounded-tr-none text-gray-200 leading-relaxed max-w-lg">
+                        أهلاً بك يا لهادي! أنا **روكي (Rocky)** مساعدك الذكي لتشخيص أعطال وحواسيب الألعاب. اخترت مواصفاتك الكاملة بالأعلى، اكتب لي أي مشكلة وسأعطيك الحل الفوري!
                     </div>
                 </div>
             </div>
@@ -233,9 +262,10 @@
             const cpu = document.getElementById('cpu').value;
             const gpu = document.getElementById('gpu').value;
             const ram = document.getElementById('ram').value;
+            const storage = document.getElementById('storage').value;
 
             setTimeout(() => {
-                let reply = generateRockyResponse(text, cpu, gpu, ram);
+                let reply = generateRockyResponse(text, cpu, gpu, ram, storage);
                 appendMessage('bot', reply);
             }, 500);
         }
@@ -264,18 +294,18 @@
             win.scrollTop = win.scrollHeight;
         }
 
-        function generateRockyResponse(query, cpu, gpu, ram) {
+        function generateRockyResponse(query, cpu, gpu, ram, storage) {
             const q = query.toLowerCase();
             let imgContext = attachedImageName ? ` (بناءً على الصورة المرفقة: ${attachedImageName})` : '';
 
             if (q.includes('بطيء') || q.includes('slow')) {
-                return `🤖 **روكي:** بالنسبة لجهازك الذي يحتوي على معالج (${cpu}) ورام (${ram})، تأكد من تنظيف الملفات المؤقتة وإلغاء التطبيقات التي تعمل بالخلفية لزيادة السرعة الفورية.`;
+                return `🤖 **روكي:** بناءً على اختيارك لمواصفات [ المعالج: ${cpu} | الرام: ${ram} | التخزين: ${storage} ]، أنصحك بفحص استهلاك القرص ومسح الملفات المؤقتة لتسريع الجهاز فوراً.`;
             } else if (q.includes('لعبة') || q.includes('lag') || q.includes('تقطيع') || q.includes('fps')) {
-                return `🎮 **روكي:** مع كارت الشاشة (${gpu}) والرام (${ram})${imgContext}، أنصحك بتحديث التعريفات الرسمية وخفض إعدادات الجرافيك للحصول على أداء سلس وخالي من التقطيع.`;
+                return `🎮 **روكي:** مع كارت الشاشة المختار (${gpu}) والرام (${ram})${imgContext}، تأكد من تحديث التعريفات الرسمية وخفض إعدادات الجرافيك للحصول على أداء ألعاب سلس ومستقر.`;
             } else if (q.includes('حرارة') || q.includes('heat')) {
-                return `🔥 **روكي:** ارتفاع الحرارة قد يسبب هبوطاً مفاجئاً في أداء معالجك (${cpu}). نظف الأتربة من المروحة وتأكد من تهوية الغرفة أو المكتب بشكل جيد!`;
+                return `🔥 **روكي:** احرص دائماً على مراقبة حرارة معالجك (${cpu}) وتغيير المعجون الحراري وتنظيف المراوح بانتظام للحفاظ على أمان القطع.`;
             } else {
-                return `🤖 **روكي:** أهلاً بك يا لهادي! لقد استقبلت رسالتك ("${query}")${imgContext} ومواصفاتك [ المعالج: ${cpu} | الكارت: ${gpu} | الرام: ${ram} ]. أنصحك بإعادة تشغيل الحاسوب والتأكد من تحديث نظام التشغيل بانتظام لاستقرار الأداء.`;
+                return `🤖 **روكي:** أهلاً بك يا لهادي! لقد استقبلت رسالتك ("${query}")${imgContext} بالاعتماد على إعدادات جهازك [ CPU: ${cpu} | GPU: ${gpu} | RAM: ${ram} | التخزين: ${storage} ]. أنا جاهز دائماً لمساعدتك في أي استفسار هندسي آخر!`;
             }
         }
     </script>
