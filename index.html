@@ -1,173 +1,300 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My PC - أداة التشخيص الاحترافية</title>
+    <title id="page-title">My PC - أداة التشخيص والشات الذكي</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-900 text-white min-h-screen flex flex-col justify-between p-4">
+<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col justify-between font-sans">
 
-    <!-- شريط العنوان واللغات -->
-    <header class="bg-gray-800 shadow-lg p-4 rounded-2xl border border-gray-700 max-w-3xl mx-auto w-full mt-2 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div>
-            <h1 class="text-2xl font-extrabold text-cyan-400">My PC 💻</h1>
-            <p class="text-gray-400 text-xs">أداة التشخيص المتقدمة لمواصفات وحالة حاسوبك</p>
-        </div>
-        <!-- أزرار اللغات -->
-        <div class="flex gap-2">
-            <button onclick="changeLang('ar')" class="px-3 py-1 bg-cyan-600 hover:bg-cyan-500 rounded-lg text-xs font-bold transition">العربية</button>
-            <button onclick="changeLang('fr')" class="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded-lg text-xs font-bold transition">Français</button>
-            <button onclick="changeLang('en')" class="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded-lg text-xs font-bold transition">English</button>
+    <!-- Navbar -->
+    <header class="bg-gray-900 border-b border-gray-800 p-4 sticky top-0 z-50 shadow-md">
+        <div class="max-w-4xl mx-auto flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-cyan-500/10 p-2 rounded-xl border border-cyan-500/20 text-cyan-400">
+                    <i class="fa-solid fa-desktop text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-white tracking-wide">My PC <span class="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded-full border border-cyan-500/30">AI Edition</span></h1>
+                    <p id="sub-heading" class="text-xs text-gray-400">منصة تشخيص العتاد والمساعد الذكي لحلول الأجهزة</p>
+                </div>
+            </div>
+            
+            <!-- Language Selector -->
+            <div class="flex bg-gray-800 p-1 rounded-xl border border-gray-700 text-xs font-semibold">
+                <button onclick="setLanguage('ar')" id="btn-ar" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white transition">العربية</button>
+                <button onclick="setLanguage('fr')" id="btn-fr" class="px-3 py-1.5 rounded-lg hover:text-cyan-400 text-gray-400 transition">Français</button>
+                <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1.5 rounded-lg hover:text-cyan-400 text-gray-400 transition">English</button>
+            </div>
         </div>
     </header>
 
-    <!-- المحتوى الرئيسي -->
-    <main class="max-w-3xl mx-auto bg-gray-800 p-6 rounded-2xl shadow-2xl border border-gray-700 w-full my-4 space-y-6">
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto w-full p-4 md:p-6 space-y-6 my-2">
         
-        <!-- قسم المواصفات -->
-        <div>
-            <h2 class="text-lg font-bold text-cyan-300 mb-3 border-b border-gray-700 pb-2" id="t-specs">اختر مواصفات جهازك بدقة:</h2>
+        <!-- Hardware Specs Selection -->
+        <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-xl">
+            <h2 id="section-specs" class="text-base font-bold text-cyan-400 mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
+                <i class="fa-solid fa-microchip"></i> حدد مواصفات حاسوبك الحالية:
+            </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- CPU -->
                 <div>
-                    <label class="block text-gray-300 text-xs mb-1 font-semibold">المعالج (CPU):</label>
-                    <select id="cpu" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-xs text-white">
-                        <option value="Intel Core i3">Intel Core i3</option>
-                        <option value="Intel Core i5" selected>Intel Core i5</option>
-                        <option value="Intel Core i7">Intel Core i7</option>
-                        <option value="AMD Ryzen 5">AMD Ryzen 5</option>
+                    <label id="label-cpu" class="block text-xs font-medium text-gray-400 mb-1">المعالج (CPU):</label>
+                    <select id="cpu" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
+                        <optgroup label="Intel Core">
+                            <option value="Intel Core i3 10th Gen" selected>Intel Core i3 (10th Gen)</option>
+                            <option value="Intel Core i3 12th/13th Gen">Intel Core i3 (12th/13th Gen)</option>
+                            <option value="Intel Core i5 10th/11th Gen">Intel Core i5 (10th/11th Gen)</option>
+                            <option value="Intel Core i5 12th/13th Gen">Intel Core i5 (12th/13th Gen)</option>
+                            <option value="Intel Core i7 / i9 High-End">Intel Core i7 / i9 (فئة عليا)</option>
+                        </optgroup>
+                        <optgroup label="AMD Ryzen">
+                            <option value="AMD Ryzen 3">AMD Ryzen 3 Series</option>
+                            <option value="AMD Ryzen 5 (3600 / 5600X)">AMD Ryzen 5 (3600 / 5600X)</option>
+                            <option value="AMD Ryzen 7 / 9">AMD Ryzen 7 / 9 Series</option>
+                        </optgroup>
                     </select>
                 </div>
 
+                <!-- GPU -->
                 <div>
-                    <label class="block text-gray-300 text-xs mb-1 font-semibold">كارت الشاشة (GPU):</label>
-                    <select id="gpu" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-xs text-white">
-                        <option value="Intel HD Graphics 630" selected>Intel HD Graphics 630</option>
-                        <option value="NVIDIA GTX 1650">NVIDIA GTX 1650</option>
-                        <option value="NVIDIA RTX 3060">NVIDIA RTX 3060</option>
+                    <label id="label-gpu" class="block text-xs font-medium text-gray-400 mb-1">كارت الشاشة (GPU):</label>
+                    <select id="gpu" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
+                        <optgroup label="Intel Integrated">
+                            <option value="Intel HD Graphics 630" selected>Intel HD Graphics 630</option>
+                            <option value="Intel Iris Xe Graphics">Intel Iris Xe Graphics</option>
+                        </optgroup>
+                        <optgroup label="NVIDIA GeForce">
+                            <option value="NVIDIA GTX 1050 Ti / 1650">NVIDIA GTX 1050 Ti / 1650</option>
+                            <option value="NVIDIA GTX 1660 Super">NVIDIA GTX 1660 Super</option>
+                            <option value="NVIDIA RTX 3060 / 3070">NVIDIA RTX 3060 / 3070</option>
+                            <option value="NVIDIA RTX 4060 / 4070">NVIDIA RTX 4060 / 4070</option>
+                        </optgroup>
+                        <optgroup label="AMD Radeon">
+                            <option value="AMD Radeon RX 580 / 5500XT">AMD Radeon RX 580 / 5500XT</option>
+                            <option value="AMD Radeon RX 6600 / 6700XT">AMD Radeon RX 6600 / 6700XT</option>
+                        </optgroup>
                     </select>
                 </div>
 
+                <!-- RAM -->
                 <div>
-                    <label class="block text-gray-300 text-xs mb-1 font-semibold">الذاكرة العشوائية (RAM):</label>
-                    <select id="ram" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-xs text-white">
-                        <option value="4 GB">4 GB</option>
-                        <option value="8 GB" selected>8 GB</option>
-                        <option value="16 GB">16 GB</option>
+                    <label id="label-ram" class="block text-xs font-medium text-gray-400 mb-1">الذاكرة العشوائية (RAM):</label>
+                    <select id="ram" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
+                        <option value="4 GB DDR3/DDR4">4 GB</option>
+                        <option value="8 GB DDR4" selected>8 GB DDR4</option>
+                        <option value="16 GB DDR4/DDR5">16 GB DDR4/DDR5</option>
+                        <option value="32 GB DDR4/DDR5">32 GB DDR4/DDR5</option>
                     </select>
                 </div>
 
+                <!-- Storage -->
                 <div>
-                    <label class="block text-gray-300 text-xs mb-1 font-semibold">نوع التخزين (Storage):</label>
-                    <select id="storage" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-xs text-white">
-                        <option value="HDD">HDD تقليدي</option>
-                        <option value="SSD" selected>SSD سريع</option>
+                    <label id="label-storage" class="block text-xs font-medium text-gray-400 mb-1">نوع التخزين (Storage):</label>
+                    <select id="storage" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
+                        <option value="HDD 500GB / 1TB">HDD (هارد ميكانيكي بطيء)</option>
+                        <option value="SSD SATA 256GB / 512GB" selected>SSD SATA (سريع)</option>
+                        <option value="NVMe M.2 SSD">NVMe M.2 SSD (فائق السرعة)</option>
                     </select>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- المشاكل الشائعة -->
-        <div class="border-t border-gray-700 pt-4">
-            <h2 class="text-lg font-bold text-yellow-400 mb-3" id="t-common">🛠️ المشاكل الشائعة (اضغط للحصول على الحل):</h2>
+        <!-- Quick Problems Fix -->
+        <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-xl">
+            <h2 id="section-trouble" class="text-base font-bold text-amber-400 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-wrench"></i> حلول سريعة للمشاكل الشائعة:
+            </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <button onclick="solveProblem('slow')" class="p-3 bg-gray-900 hover:bg-gray-700 border border-gray-700 rounded-xl text-right text-xs transition cursor-pointer">⚠️ الجهاز بطيء جداً عند الاستخدام أو الإقلاع</button>
-                <button onclick="solveProblem('games')" class="p-3 bg-gray-900 hover:bg-gray-700 border border-gray-700 rounded-xl text-right text-xs transition cursor-pointer">🎮 الألعاب تقطع أو تعاني من Lag شديد</button>
-                <button onclick="solveProblem('heat')" class="p-3 bg-gray-900 hover:bg-gray-700 border border-gray-700 rounded-xl text-right text-xs transition cursor-pointer">🔥 ارتفاع حرارة المعالج وصوت المروحة العالي</button>
-                <button onclick="solveProblem('net')" class="p-3 bg-gray-900 hover:bg-gray-700 border border-gray-700 rounded-xl text-right text-xs transition cursor-pointer">🌐 انقطاع متكرر أو بطء شديد في الإنترنت</button>
-            </div>
-        </div>
-
-        <!-- رفع الصور -->
-        <div class="border-t border-gray-700 pt-4">
-            <h2 class="text-lg font-bold text-cyan-300 mb-2">📸 إرفاق صورة أو لقطة شاشة (Screenshot):</h2>
-            <label class="w-full flex flex-col items-center px-4 py-4 bg-gray-900 text-cyan-400 rounded-xl border border-dashed border-cyan-500 cursor-pointer hover:bg-gray-700 transition">
-                <span class="text-xs font-semibold">اضغط لاختيار صورة من جهازك</span>
-                <input type="file" accept="image/*" class="hidden" onchange="previewImage(event)">
-            </label>
-            <div id="img-container" class="hidden mt-3 text-center">
-                <p id="img-name" class="text-xs text-green-400 mb-2"></p>
-                <img id="img-view" class="max-h-40 mx-auto rounded-lg border border-gray-700">
-            </div>
-        </div>
-
-        <!-- كتابة المشكلة يدوياً -->
-        <div class="border-t border-gray-700 pt-4">
-            <h2 class="text-lg font-bold text-cyan-300 mb-2">✍️ أو اكتب مشكلتك بالتحديد هنا:</h2>
-            <div class="space-y-3">
-                <textarea id="custom-input" rows="2" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-cyan-500" placeholder="اكتب أي مشكلة تواجهك..."></textarea>
-                <button onclick=" analyzeCustom()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-gray-900 font-extrabold p-3 rounded-xl shadow-lg transition duration-200 text-sm cursor-pointer">
-                    💡 تحليل المشكلة وإعطاء الحل الفوري
+                <button onclick="quickFix('slow')" id="fix-btn-1" class="p-3 bg-gray-950 hover:bg-gray-800 border border-gray-800 rounded-xl text-right text-xs transition flex items-center justify-between group">
+                    <span>⚠️ بطء النظام والإقلاع</span>
+                    <i class="fa-solid fa-chevron-left text-gray-600 group-hover:text-amber-400 transition"></i>
+                </button>
+                <button onclick="quickFix('games')" id="fix-btn-2" class="p-3 bg-gray-950 hover:bg-gray-800 border border-gray-800 rounded-xl text-right text-xs transition flex items-center justify-between group">
+                    <span>🎮 تقطيع الألعاب وانخفاض الـ FPS</span>
+                    <i class="fa-solid fa-chevron-left text-gray-600 group-hover:text-amber-400 transition"></i>
+                </button>
+                <button onclick="quickFix('heat')" id="fix-btn-3" class="p-3 bg-gray-950 hover:bg-gray-800 border border-gray-800 rounded-xl text-right text-xs transition flex items-center justify-between group">
+                    <span>🔥 ارتفاع الحرارة وضوضاء المراوح</span>
+                    <i class="fa-solid fa-chevron-left text-gray-600 group-hover:text-amber-400 transition"></i>
+                </button>
+                <button onclick="quickFix('net')" id="fix-btn-4" class="p-3 bg-gray-950 hover:bg-gray-800 border border-gray-800 rounded-xl text-right text-xs transition flex items-center justify-between group">
+                    <span>🌐 مشاكل وانقطاع شبكة الإنترنت</span>
+                    <i class="fa-solid fa-chevron-left text-gray-600 group-hover:text-amber-400 transition"></i>
                 </button>
             </div>
-        </div>
+        </section>
 
-        <!-- صندوق النتائج -->
-        <div id="result-box" class="hidden p-4 bg-gray-900 border border-cyan-500/40 rounded-xl text-center space-y-2">
-            <h3 class="text-base font-bold text-cyan-400">تقرير التشخيص والحل المقترح:</h3>
-            <p id="result-text" class="text-gray-300 text-xs leading-relaxed"></p>
-        </div>
+        <!-- Upload Screenshot -->
+        <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-xl">
+            <h2 id="section-image" class="text-base font-bold text-cyan-400 mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-image"></i> إرفاق صورة أو لقطة شاشة للخطأ:
+            </h2>
+            <p id="image-desc" class="text-xs text-gray-400 mb-3">ارفع صورة الخطأ لتضمينها مع تقرير الفحص والحل:</p>
+            
+            <label class="flex flex-col items-center justify-center p-4 border-2 border-dashed border-gray-700 hover:border-cyan-500 bg-gray-950 rounded-xl cursor-pointer transition">
+                <i class="fa-solid fa-cloud-arrow-up text-2xl text-cyan-400 mb-2"></i>
+                <span id="upload-text" class="text-xs font-semibold text-gray-300">اضغط لاختيار صورة أو التقاطها من الجهاز</span>
+                <input type="file" accept="image/*" class="hidden" onchange="handleImage(event)">
+            </label>
+
+            <div id="img-preview-box" class="hidden mt-3 p-3 bg-gray-950 rounded-xl border border-gray-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <img id="img-preview" class="w-12 h-12 object-cover rounded-lg border border-gray-700">
+                    <span id="img-name" class="text-xs text-green-400 truncate max-w-xs"></span>
+                </div>
+                <button onclick="removeImage()" class="text-xs text-red-400 hover:text-red-300 px-2 py-1"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </section>
+
+        <!-- AI Interactive Hardware Chatbot -->
+        <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-xl space-y-4">
+            <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+                <h2 id="section-chat" class="text-base font-bold text-cyan-400 flex items-center gap-2">
+                    <i class="fa-solid fa-robot"></i> الشات الذكي لمشاكل الجهاز (AI Hardware Chat):
+                </h2>
+                <span class="text-[10px] bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full border border-green-500/30 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span> متصل الان
+                </span>
+            </div>
+
+            <!-- Chat Window -->
+            <div id="chat-window" class="h-64 overflow-y-auto bg-gray-950 border border-gray-800 rounded-xl p-4 space-y-3 text-xs">
+                <!-- Welcome Bot Msg -->
+                <div class="flex gap-2.5 items-start">
+                    <div class="w-7 h-7 rounded-lg bg-cyan-600 flex items-center justify-center text-white shrink-0">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div id="welcome-msg" class="bg-gray-800 border border-gray-700 p-3 rounded-2xl rounded-tr-none text-gray-200 leading-relaxed max-w-lg">
+                        أهلاً بك! أنا مساعد تشخيص الأعطال والعتاد المباشر. يمكنك اختيار مواصفاتك بالأعلى، ثم كتابة مشكلتك هنا أو الضغط على زر التحليل لإعطائك الحل الهندسي فوراً!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input Area -->
+            <div class="flex gap-2">
+                <input type="text" id="chat-input" onkeypress="handleEnter(event)" class="flex-1 bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500" placeholder="اكتب مشكلتك التفصيلية هنا...">
+                <button onclick="sendChatMessage()" id="btn-send" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold px-5 rounded-xl transition flex items-center justify-center">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </section>
+
     </main>
 
-    <!-- الحقوق -->
-    <footer class="text-center text-gray-500 text-xs py-2">
+    <!-- Footer -->
+    <footer class="text-center py-4 border-t border-gray-900 text-xs text-gray-500">
         جميع الحقوق محفوظة © My PC 2026
     </footer>
 
-    <!-- السكريبت البرمجي المشغل لكل الأزرار -->
+    <!-- Logic Script -->
     <script>
-        function solveProblem(type) {
-            const box = document.getElementById('result-box');
-            const text = document.getElementById('result-text');
-            
-            let solutions = {
-                slow: "🔧 **حل مشكلة البطء:** تأكد من خلو قرص النظام (C) من الامتلاء، وقم بتعطيل برامج البدء التلقائي غير الضرورية من مدير المهام (Task Manager).",
-                games: "🎮 **حل مشكلة الألعاب:** حدث تعريف كارت الشاشة لآخر إصدار، قلل جودة الرسوميات داخل اللعبة، وأغلق برامج الخلفية لتوفير الذاكرة (RAM).",
-                heat: "🔥 **حل مشكلة الحرارة:** قم بتنظيف الأتربة المتراكمة داخل مروحة الحاسوب، وتأكد من تغيير المعجون الحراري (Thermal Paste).",
-                net: "🌐 **حل مشاكل الإنترنت:** قم بإعادة تشغيل الراوتر، أو تأكد من سلامة تعريف كارت الشبكة Wi-Fi أو الكابل."
-            };
+        let currentLang = 'ar';
+        let attachedImageName = "";
 
-            text.innerHTML = solutions[type] || "تم فحص النظام بنجاح.";
-            box.classList.remove('hidden');
-        }
-
-        function analyzeCustom() {
-            const input = document.getElementById('custom-input').value.trim();
-            const box = document.getElementById('result-box');
-            const text = document.getElementById('result-text');
-
-            if (!input) {
-                text.innerText = "⚠️ يرجى كتابة المشكلة في المربع أولاً!";
-                box.classList.remove('hidden');
-                return;
+        const i18n = {
+            ar: {
+                sub: "منصة تشخيص العتاد والمساعد الذكي لحلول الأجهزة",
+                specs: "حدد مواصفات حاسوبك الحالية:",
+                trouble: "حلول سريعة للمشاكل الشائعة:",
+                imgTitle: "إرفاق صورة أو لقطة شاشة للخطأ:",
+                imgDesc: "ارفع صورة الخطأ لتضمينها مع تقرير الفحص والحل:",
+                upload: "اضغط لاختيار صورة أو التقاطها من الجهاز",
+                chatTitle: "الشات الذكي لمشاكل الجهاز (AI Hardware Chat):",
+                placeholder: "اكتب مشكلتك التفصيلية هنا...",
+                welcome: "أهلاً بك! أنا مساعد تشخيص الأعطال والعتاد المباشر. يمكنك اختيار مواصفاتك بالأعلى، ثم كتابة مشكلتك هنا أو الضغط على زر التحليل لإعطائك الحل الهندسي فوراً!",
+                fixes: {
+                    slow: "🔧 **حل بطء النظام:**\n- افحص نسبة استهلاك القرص والذاكرة عبر Task Manager.\n- قم بالترقية من HDD إلى SSD للتمتع بإنهاء بطء التشغيل تماماً.\n- عطل برامج الـ Startup غير المجدية.",
+                    games: "🎮 **حل تقطيع الألعاب:**\n- قم بتحديث تعريف كارت الشاشة المخصص لأحدث إصدار.\n- خفض إعدادات الجرافيك (Shadows/Textures) داخل اللعبة.\n- اغلق متصفحات Chrome والبرامج بالخلفية لتوفير الرام.",
+                    heat: "🔥 **حل الحرارة المرتفعة:**\n- قم بتنظيف الأتربة المتراكمة في المراوح ومنافذ التهوية.\n- غيّر المعجون الحراري (Thermal Paste) على المعالج.\n- اضبط وضع الطاقة في الويندوز على Balanced.",
+                    net: "🌐 **حل مشاكل الإنترنت:**\n- أعد تشغيل الراوتر وافصل الكهرباء لـ 30 ثانية.\n- استخدم أمر `ipconfig /flushdns` في CMD لتنظيف الشبكة.\n- تأكد من تحديث تعريف كارت الواي فاي."
+                }
+            },
+            fr: {
+                sub: "Plateforme de diagnostic matériel et assistant IA",
+                specs: "Sélectionnez les spécifications de votre PC :",
+                trouble: "Solutions rapides aux problèmes courants :",
+                imgTitle: "Joindre une capture d'écran de l'erreur :",
+                imgDesc: "Téléchargez l'image de l'erreur pour analyse :",
+                upload: "Cliquez pour choisir ou capturer une image",
+                chatTitle: "Chat Assistant Matériel IA :",
+                placeholder: "Décrivez votre problème en détail ici...",
+                welcome: "Bienvenue ! Je suis votre assistant matériel. Choisissez vos composants et décrivez votre problème ci-dessous.",
+                fixes: {
+                    slow: "🔧 **Solution Lenteur :** Passez à un SSD et désactivez les applications au démarrage.",
+                    games: "🎮 **Solution Gaming :** Mettez à jour vos pilotes GPU et réduisez les graphismes.",
+                    heat: "🔥 **Solution Surchauffe :** Nettoyez la poussière et remplacez la pâte thermique.",
+                    net: "🌐 **Solution Réseau :** Redémarrez le routeur et réinitialisez le DNS."
+                }
+            },
+            en: {
+                sub: "Hardware Diagnostic Platform & AI Assistant",
+                specs: "Select your current PC specifications:",
+                trouble: "Quick Solutions for Common Issues:",
+                imgTitle: "Attach Error Screenshot or Image:",
+                imgDesc: "Upload error image for automated analysis:",
+                upload: "Click to select or capture an image",
+                chatTitle: "AI Hardware Chat Assistant:",
+                placeholder: "Type your detailed issue here...",
+                welcome: "Welcome! I am your AI Hardware Assistant. Select your specs above and describe your issue below.",
+                fixes: {
+                    slow: "🔧 **Slow PC Fix:** Upgrade to an SSD and disable startup apps in Task Manager.",
+                    games: "🎮 **Lag Fix:** Update GPU drivers and lower in-game graphics settings.",
+                    heat: "🔥 **Overheating Fix:** Clean internal dust and reapply CPU thermal paste.",
+                    net: "🌐 **Network Fix:** Restart router and flush DNS via command line."
+                }
             }
+        };
 
-            text.innerHTML = `✅ **تحليل المشكلة (${input}):** بناءً على وصفك، يُنصح بإعادة تشغيل الحاسوب وفحص ملفات النظام والتأكد من تحديث كافة التعريفات.`;
-            box.classList.remove('hidden');
+        function setLanguage(lang) {
+            currentLang = lang;
+            const t = i18n[lang];
+
+            document.getElementById('html-root').setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            document.getElementById('sub-heading').innerText = t.sub;
+            document.getElementById('section-specs').innerText = t.specs;
+            document.getElementById('section-trouble').innerText = t.trouble;
+            document.getElementById('section-image').innerText = t.imgTitle;
+            document.getElementById('image-desc').innerText = t.imgDesc;
+            document.getElementById('upload-text').innerText = t.upload;
+            document.getElementById('section-chat').innerText = t.chatTitle;
+            document.getElementById('chat-input').placeholder = t.placeholder;
+            document.getElementById('welcome-msg').innerText = t.welcome;
+
+            ['ar', 'fr', 'en'].forEach(l => {
+                const btn = document.getElementById(`btn-${l}`);
+                if (l === lang) {
+                    btn.className = "px-3 py-1.5 rounded-lg bg-cyan-600 text-white transition";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-lg hover:text-cyan-400 text-gray-400 transition";
+                }
+            });
         }
 
-        function previewImage(event) {
-            const file = event.target.files[0];
+        function quickFix(type) {
+            const fixText = i18n[currentLang].fixes[type];
+            appendMessage('bot', fixText);
+        }
+
+        function handleImage(e) {
+            const file = e.target.files[0];
             if (file) {
-                const container = document.getElementById('img-container');
-                const nameElem = document.getElementById('img-name');
-                const preview = document.getElementById('img-view');
-                const box = document.getElementById('result-box');
-                const text = document.getElementById('result-text');
+                attachedImageName = file.name;
+                document.getElementById('img-name').innerText = file.name;
+                document.getElementById('img-preview').src = URL.createObjectURL(file);
+                document.getElementById('img-preview-box').classList.remove('hidden');
 
-                nameElem.innerText = `تم رفع الصورة بنجاح: ${file.name}`;
-                preview.src = URL.createObjectURL(file);
-                container.classList.remove('hidden');
-
-                text.innerHTML = "📸 **تم استلام الصورة بنجاح:** تم فحص لقطة الشاشة، ننصح بمراجعة رسالة الخطأ الظاهرة والتأكد من توافق التعريفات.";
-                box.classList.remove('hidden');
+                const msg = currentLang === 'ar' ? 
+                    `📸 تم إرفاق الصورة بنجاح (${file.name}). جاري تحليل الصورة ومطابقتها مع مواصفات جهازك...` :
+                    `📸 Screenshot attached (${file.name}). Analyzing image against system hardware...`;
+                appendMessage('bot', msg);
             }
         }
 
-        function changeLang(lang) {
-            alert(lang === 'ar' ? "تم التفعيل باللغة العربية" : "Language switched successfully");
-        }
-    </script>
-</body>
-</html>
+        function removeImage() {
+            attachedImageName = "";
+            document.getElementById('
