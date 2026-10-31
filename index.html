@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">My PC - أداة التشخيص والشات الذكي</title>
+    <title>My PC - روبي & روكي المساعد الذكي</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -14,11 +14,11 @@
         <div class="max-w-4xl mx-auto flex flex-wrap justify-between items-center gap-4">
             <div class="flex items-center gap-3">
                 <div class="bg-cyan-500/10 p-2 rounded-xl border border-cyan-500/20 text-cyan-400">
-                    <i class="fa-solid fa-desktop text-2xl"></i>
+                    <i class="fa-solid fa-robot text-2xl"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-bold text-white tracking-wide">My PC <span class="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded-full border border-cyan-500/30">AI Edition</span></h1>
-                    <p id="sub-heading" class="text-xs text-gray-400">منصة تشخيص العتاد والمساعد الذكي لحلول الأجهزة</p>
+                    <h1 class="text-xl font-bold text-white tracking-wide">My PC <span class="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded-full border border-cyan-500/30">روكي AI</span></h1>
+                    <p class="text-xs text-gray-400">منصة تشخيص العتاد ومساعدك الذكي روكي</p>
                 </div>
             </div>
             
@@ -36,69 +36,48 @@
         
         <!-- Hardware Specs Selection -->
         <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-xl">
-            <h2 id="section-specs" class="text-base font-bold text-cyan-400 mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
+            <h2 class="text-base font-bold text-cyan-400 mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
                 <i class="fa-solid fa-microchip"></i> حدد مواصفات حاسوبك الحالية:
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <!-- CPU -->
                 <div>
-                    <label id="label-cpu" class="block text-xs font-medium text-gray-400 mb-1">المعالج (CPU):</label>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">المعالج (CPU):</label>
                     <select id="cpu" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
-                        <optgroup label="Intel Core">
-                            <option value="Intel Core i3 10th Gen" selected>Intel Core i3 (10th Gen)</option>
-                            <option value="Intel Core i3 12th/13th Gen">Intel Core i3 (12th/13th Gen)</option>
-                            <option value="Intel Core i5 10th/11th Gen">Intel Core i5 (10th/11th Gen)</option>
-                            <option value="Intel Core i5 12th/13th Gen">Intel Core i5 (12th/13th Gen)</option>
-                            <option value="Intel Core i7 / i9 High-End">Intel Core i7 / i9 (فئة عليا)</option>
-                        </optgroup>
-                        <optgroup label="AMD Ryzen">
-                            <option value="AMD Ryzen 3">AMD Ryzen 3 Series</option>
-                            <option value="AMD Ryzen 5 (3600 / 5600X)">AMD Ryzen 5 (3600 / 5600X)</option>
-                            <option value="AMD Ryzen 7 / 9">AMD Ryzen 7 / 9 Series</option>
-                        </optgroup>
+                        <option value="Intel Core i3 10th Gen">Intel Core i3 (10th Gen)</option>
+                        <option value="Intel Core i5" selected>Intel Core i5</option>
+                        <option value="Intel Core i7">Intel Core i7</option>
+                        <option value="AMD Ryzen 5">AMD Ryzen 5</option>
                     </select>
                 </div>
 
                 <!-- GPU -->
                 <div>
-                    <label id="label-gpu" class="block text-xs font-medium text-gray-400 mb-1">كارت الشاشة (GPU):</label>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">كارت الشاشة (GPU):</label>
                     <select id="gpu" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
-                        <optgroup label="Intel Integrated">
-                            <option value="Intel HD Graphics 630" selected>Intel HD Graphics 630</option>
-                            <option value="Intel Iris Xe Graphics">Intel Iris Xe Graphics</option>
-                        </optgroup>
-                        <optgroup label="NVIDIA GeForce">
-                            <option value="NVIDIA GTX 1050 Ti / 1650">NVIDIA GTX 1050 Ti / 1650</option>
-                            <option value="NVIDIA GTX 1660 Super">NVIDIA GTX 1660 Super</option>
-                            <option value="NVIDIA RTX 3060 / 3070">NVIDIA RTX 3060 / 3070</option>
-                            <option value="NVIDIA RTX 4060 / 4070">NVIDIA RTX 4060 / 4070</option>
-                        </optgroup>
-                        <optgroup label="AMD Radeon">
-                            <option value="AMD Radeon RX 580 / 5500XT">AMD Radeon RX 580 / 5500XT</option>
-                            <option value="AMD Radeon RX 6600 / 6700XT">AMD Radeon RX 6600 / 6700XT</option>
-                        </optgroup>
+                        <option value="Intel HD Graphics 630" selected>Intel HD Graphics 630</option>
+                        <option value="NVIDIA GTX 1650">NVIDIA GTX 1650</option>
+                        <option value="NVIDIA RTX 3060">NVIDIA RTX 3060</option>
                     </select>
                 </div>
 
                 <!-- RAM -->
                 <div>
-                    <label id="label-ram" class="block text-xs font-medium text-gray-400 mb-1">الذاكرة العشوائية (RAM):</label>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">الذاكرة العشوائية (RAM):</label>
                     <select id="ram" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
-                        <option value="4 GB DDR3/DDR4">4 GB</option>
-                        <option value="8 GB DDR4" selected>8 GB DDR4</option>
-                        <option value="16 GB DDR4/DDR5">16 GB DDR4/DDR5</option>
-                        <option value="32 GB DDR4/DDR5">32 GB DDR4/DDR5</option>
+                        <option value="4 GB">4 GB</option>
+                        <option value="8 GB" selected>8 GB</option>
+                        <option value="16 GB">16 GB</option>
                     </select>
                 </div>
 
                 <!-- Storage -->
                 <div>
-                    <label id="label-storage" class="block text-xs font-medium text-gray-400 mb-1">نوع التخزين (Storage):</label>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">نوع التخزين (Storage):</label>
                     <select id="storage" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
-                        <option value="HDD 500GB / 1TB">HDD (هارد ميكانيكي بطيء)</option>
-                        <option value="SSD SATA 256GB / 512GB" selected>SSD SATA (سريع)</option>
-                        <option value="NVMe M.2 SSD">NVMe M.2 SSD (فائق السرعة)</option>
+                        <option value="HDD">HDD تقليدي</option>
+                        <option value="SSD" selected>SSD سريع</option>
                     </select>
                 </div>
             </div>
@@ -106,23 +85,23 @@
 
         <!-- Quick Problems Fix -->
         <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-xl">
-            <h2 id="section-trouble" class="text-base font-bold text-amber-400 mb-3 flex items-center gap-2">
+            <h2 class="text-base font-bold text-amber-400 mb-3 flex items-center gap-2">
                 <i class="fa-solid fa-wrench"></i> حلول سريعة للمشاكل الشائعة:
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <button onclick="quickFix('slow')" id="fix-btn-1" class="p-3 bg-gray-950 hover:bg-gray-800 border border-gray-800 rounded-xl text-right text-xs transition flex items-center justify-between group">
+                <button type="button" onclick="quickFix('slow')" class="p-3 bg-gray-950 hover:bg-gray-800 border border-gray-800 rounded-xl text-right text-xs transition flex items-center justify-between group cursor-pointer">
                     <span>⚠️ بطء النظام والإقلاع</span>
                     <i class="fa-solid fa-chevron-left text-gray-600 group-hover:text-amber-400 transition"></i>
                 </button>
-                <button onclick="quickFix('games')" id="fix-btn-2" class="p-3 bg-gray-950 hover:bg-gray-800 border border-gray-800 rounded-xl text-right text-xs transition flex items-center justify-between group">
+                <button type="button" onclick="quickFix('games')" class="p-3 bg-gray-950 hover:bg-gray-800 border border-gray-800 rounded-xl text-right text-xs transition flex items-center justify-between group cursor-pointer">
                     <span>🎮 تقطيع الألعاب وانخفاض الـ FPS</span>
                     <i class="fa-solid fa-chevron-left text-gray-600 group-hover:text-amber-400 transition"></i>
                 </button>
-                <button onclick="quickFix('heat')" id="fix-btn-3" class="p-3 bg-gray-950 hover:bg-gray-800 border border-gray-800 rounded-xl text-right text-xs transition flex items-center justify-between group">
+                <button type="button" onclick="quickFix('heat')" class="p-3 bg-gray-950 hover:bg-gray-800 border border-gray-800 rounded-xl text-right text-xs transition flex items-center justify-between group cursor-pointer">
                     <span>🔥 ارتفاع الحرارة وضوضاء المراوح</span>
                     <i class="fa-solid fa-chevron-left text-gray-600 group-hover:text-amber-400 transition"></i>
                 </button>
-                <button onclick="quickFix('net')" id="fix-btn-4" class="p-3 bg-gray-950 hover:bg-gray-800 border border-gray-800 rounded-xl text-right text-xs transition flex items-center justify-between group">
+                <button type="button" onclick="quickFix('net')" class="p-3 bg-gray-950 hover:bg-gray-800 border border-gray-800 rounded-xl text-right text-xs transition flex items-center justify-between group cursor-pointer">
                     <span>🌐 مشاكل وانقطاع شبكة الإنترنت</span>
                     <i class="fa-solid fa-chevron-left text-gray-600 group-hover:text-amber-400 transition"></i>
                 </button>
@@ -131,14 +110,14 @@
 
         <!-- Upload Screenshot -->
         <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-xl">
-            <h2 id="section-image" class="text-base font-bold text-cyan-400 mb-2 flex items-center gap-2">
+            <h2 class="text-base font-bold text-cyan-400 mb-2 flex items-center gap-2">
                 <i class="fa-solid fa-image"></i> إرفاق صورة أو لقطة شاشة للخطأ:
             </h2>
-            <p id="image-desc" class="text-xs text-gray-400 mb-3">ارفع صورة الخطأ لتضمينها مع تقرير الفحص والحل:</p>
+            <p class="text-xs text-gray-400 mb-3">ارفع صورة الخطأ لتضمينها مع تقرير الفحص والحل:</p>
             
             <label class="flex flex-col items-center justify-center p-4 border-2 border-dashed border-gray-700 hover:border-cyan-500 bg-gray-950 rounded-xl cursor-pointer transition">
                 <i class="fa-solid fa-cloud-arrow-up text-2xl text-cyan-400 mb-2"></i>
-                <span id="upload-text" class="text-xs font-semibold text-gray-300">اضغط لاختيار صورة أو التقاطها من الجهاز</span>
+                <span class="text-xs font-semibold text-gray-300">اضغط لاختيار صورة أو التقاطها من الجهاز</span>
                 <input type="file" accept="image/*" class="hidden" onchange="handleImage(event)">
             </label>
 
@@ -147,18 +126,18 @@
                     <img id="img-preview" class="w-12 h-12 object-cover rounded-lg border border-gray-700">
                     <span id="img-name" class="text-xs text-green-400 truncate max-w-xs"></span>
                 </div>
-                <button onclick="removeImage()" class="text-xs text-red-400 hover:text-red-300 px-2 py-1"><i class="fa-solid fa-trash"></i></button>
+                <button type="button" onclick="removeImage()" class="text-xs text-red-400 hover:text-red-300 px-2 py-1"><i class="fa-solid fa-trash"></i></button>
             </div>
         </section>
 
-        <!-- AI Interactive Hardware Chatbot -->
+        <!-- AI Interactive Hardware Chatbot (Rocky) -->
         <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-xl space-y-4">
             <div class="flex items-center justify-between border-b border-gray-800 pb-3">
-                <h2 id="section-chat" class="text-base font-bold text-cyan-400 flex items-center gap-2">
-                    <i class="fa-solid fa-robot"></i> الشات الذكي لمشاكل الجهاز (AI Hardware Chat):
+                <h2 class="text-base font-bold text-cyan-400 flex items-center gap-2">
+                    <i class="fa-solid fa-robot"></i> الشات الذكي مع الروبوت روكي (Rocky AI):
                 </h2>
                 <span class="text-[10px] bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full border border-green-500/30 flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span> متصل الان
+                    <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span> روكي متصل الآن
                 </span>
             </div>
 
@@ -166,19 +145,19 @@
             <div id="chat-window" class="h-64 overflow-y-auto bg-gray-950 border border-gray-800 rounded-xl p-4 space-y-3 text-xs">
                 <!-- Welcome Bot Msg -->
                 <div class="flex gap-2.5 items-start">
-                    <div class="w-7 h-7 rounded-lg bg-cyan-600 flex items-center justify-center text-white shrink-0">
+                    <div class="w-7 h-7 rounded-lg bg-cyan-600 flex items-center justify-center text-white shrink-0 font-bold">
                         <i class="fa-solid fa-robot"></i>
                     </div>
                     <div id="welcome-msg" class="bg-gray-800 border border-gray-700 p-3 rounded-2xl rounded-tr-none text-gray-200 leading-relaxed max-w-lg">
-                        أهلاً بك! أنا مساعد تشخيص الأعطال والعتاد المباشر. يمكنك اختيار مواصفاتك بالأعلى، ثم كتابة مشكلتك هنا أو الضغط على زر التحليل لإعطائك الحل الهندسي فوراً!
+                        أهلاً بك يا لهادي! أنا **روكي (Rocky)** مساعدك الذكي لتشخيص أعطال وحواسيب الألعاب. اكتب لي مشكلتك هنا أو اختر من الحلول السريعة وسأعطيك الحل الفوري!
                     </div>
                 </div>
             </div>
 
             <!-- Chat Input Area -->
             <div class="flex gap-2">
-                <input type="text" id="chat-input" onkeypress="handleEnter(event)" class="flex-1 bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500" placeholder="اكتب مشكلتك التفصيلية هنا...">
-                <button onclick="sendChatMessage()" id="btn-send" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold px-5 rounded-xl transition flex items-center justify-center">
+                <input type="text" id="chat-input" onkeypress="handleEnter(event)" class="flex-1 bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500" placeholder="اسأل روكي عن أي مشكلة...">
+                <button type="button" onclick="sendChatMessage()" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold px-5 rounded-xl transition flex items-center justify-center cursor-pointer">
                     <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </div>
@@ -196,75 +175,17 @@
         let currentLang = 'ar';
         let attachedImageName = "";
 
-        const i18n = {
-            ar: {
-                sub: "منصة تشخيص العتاد والمساعد الذكي لحلول الأجهزة",
-                specs: "حدد مواصفات حاسوبك الحالية:",
-                trouble: "حلول سريعة للمشاكل الشائعة:",
-                imgTitle: "إرفاق صورة أو لقطة شاشة للخطأ:",
-                imgDesc: "ارفع صورة الخطأ لتضمينها مع تقرير الفحص والحل:",
-                upload: "اضغط لاختيار صورة أو التقاطها من الجهاز",
-                chatTitle: "الشات الذكي لمشاكل الجهاز (AI Hardware Chat):",
-                placeholder: "اكتب مشكلتك التفصيلية هنا...",
-                welcome: "أهلاً بك! أنا مساعد تشخيص الأعطال والعتاد المباشر. يمكنك اختيار مواصفاتك بالأعلى، ثم كتابة مشكلتك هنا أو الضغط على زر التحليل لإعطائك الحل الهندسي فوراً!",
-                fixes: {
-                    slow: "🔧 **حل بطء النظام:**\n- افحص نسبة استهلاك القرص والذاكرة عبر Task Manager.\n- قم بالترقية من HDD إلى SSD للتمتع بإنهاء بطء التشغيل تماماً.\n- عطل برامج الـ Startup غير المجدية.",
-                    games: "🎮 **حل تقطيع الألعاب:**\n- قم بتحديث تعريف كارت الشاشة المخصص لأحدث إصدار.\n- خفض إعدادات الجرافيك (Shadows/Textures) داخل اللعبة.\n- اغلق متصفحات Chrome والبرامج بالخلفية لتوفير الرام.",
-                    heat: "🔥 **حل الحرارة المرتفعة:**\n- قم بتنظيف الأتربة المتراكمة في المراوح ومنافذ التهوية.\n- غيّر المعجون الحراري (Thermal Paste) على المعالج.\n- اضبط وضع الطاقة في الويندوز على Balanced.",
-                    net: "🌐 **حل مشاكل الإنترنت:**\n- أعد تشغيل الراوتر وافصل الكهرباء لـ 30 ثانية.\n- استخدم أمر `ipconfig /flushdns` في CMD لتنظيف الشبكة.\n- تأكد من تحديث تعريف كارت الواي فاي."
-                }
-            },
-            fr: {
-                sub: "Plateforme de diagnostic matériel et assistant IA",
-                specs: "Sélectionnez les spécifications de votre PC :",
-                trouble: "Solutions rapides aux problèmes courants :",
-                imgTitle: "Joindre une capture d'écran de l'erreur :",
-                imgDesc: "Téléchargez l'image de l'erreur pour analyse :",
-                upload: "Cliquez pour choisir ou capturer une image",
-                chatTitle: "Chat Assistant Matériel IA :",
-                placeholder: "Décrivez votre problème en détail ici...",
-                welcome: "Bienvenue ! Je suis votre assistant matériel. Choisissez vos composants et décrivez votre problème ci-dessous.",
-                fixes: {
-                    slow: "🔧 **Solution Lenteur :** Passez à un SSD et désactivez les applications au démarrage.",
-                    games: "🎮 **Solution Gaming :** Mettez à jour vos pilotes GPU et réduisez les graphismes.",
-                    heat: "🔥 **Solution Surchauffe :** Nettoyez la poussière et remplacez la pâte thermique.",
-                    net: "🌐 **Solution Réseau :** Redémarrez le routeur et réinitialisez le DNS."
-                }
-            },
-            en: {
-                sub: "Hardware Diagnostic Platform & AI Assistant",
-                specs: "Select your current PC specifications:",
-                trouble: "Quick Solutions for Common Issues:",
-                imgTitle: "Attach Error Screenshot or Image:",
-                imgDesc: "Upload error image for automated analysis:",
-                upload: "Click to select or capture an image",
-                chatTitle: "AI Hardware Chat Assistant:",
-                placeholder: "Type your detailed issue here...",
-                welcome: "Welcome! I am your AI Hardware Assistant. Select your specs above and describe your issue below.",
-                fixes: {
-                    slow: "🔧 **Slow PC Fix:** Upgrade to an SSD and disable startup apps in Task Manager.",
-                    games: "🎮 **Lag Fix:** Update GPU drivers and lower in-game graphics settings.",
-                    heat: "🔥 **Overheating Fix:** Clean internal dust and reapply CPU thermal paste.",
-                    net: "🌐 **Network Fix:** Restart router and flush DNS via command line."
-                }
-            }
+        const solutions = {
+            slow: "🤖 **رد روكي (حل بطء النظام):**\n- يا لهادي، تأكد من عدم امتلاء قرص النظام (C).\n- عطل البرامج التي تعمل تلقائياً عند الإقلاع من مدير المهام (Task Manager).\n- إذا كنت تستخدم هارد HDD قديم، أنصحك بالترقية إلى SSD لتبلغ السرعة القصوى!",
+            games: "🎮 **رد روكي (حل تقطيع الألعاب):**\n- قم بتحديث تعريف كارت الشاشة لآخر إصدار.\n- قلل جودة الرسوميات (Graphics) ودقة الشاشة داخل اللعبة.\n- أغلق متصفح الإنترنت وبرامج الخلفية لتفريغ الرام وتثبيت الـ FPS.",
+            heat: "🔥 **رد روكي (حل ارتفاع الحرارة):**\n- قم بتنظيف المروحة ومشتت الحرارة من الأتربة المتراكمة.\n- تأكد من تغيير المعجون الحراري (Thermal Paste) للمعالج بانتظام لتجنب التهنيج.",
+            net: "🌐 **رد روكي (حل مشاكل الإنترنت):**\n- أعد تشغيل الراوتر وافصله لمدة 30 ثانية.\n- استخدم أمر (ipconfig /flushdns) في موجه الأوامر (CMD) لتنظيف الكاش."
         };
 
         function setLanguage(lang) {
             currentLang = lang;
-            const t = i18n[lang];
-
             document.getElementById('html-root').setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-            document.getElementById('sub-heading').innerText = t.sub;
-            document.getElementById('section-specs').innerText = t.specs;
-            document.getElementById('section-trouble').innerText = t.trouble;
-            document.getElementById('section-image').innerText = t.imgTitle;
-            document.getElementById('image-desc').innerText = t.imgDesc;
-            document.getElementById('upload-text').innerText = t.upload;
-            document.getElementById('section-chat').innerText = t.chatTitle;
-            document.getElementById('chat-input').placeholder = t.placeholder;
-            document.getElementById('welcome-msg').innerText = t.welcome;
-
+            
             ['ar', 'fr', 'en'].forEach(l => {
                 const btn = document.getElementById(`btn-${l}`);
                 if (l === lang) {
@@ -276,8 +197,8 @@
         }
 
         function quickFix(type) {
-            const fixText = i18n[currentLang].fixes[type];
-            appendMessage('bot', fixText);
+            const text = solutions[type];
+            appendMessage('bot', text);
         }
 
         function handleImage(e) {
@@ -288,13 +209,75 @@
                 document.getElementById('img-preview').src = URL.createObjectURL(file);
                 document.getElementById('img-preview-box').classList.remove('hidden');
 
-                const msg = currentLang === 'ar' ? 
-                    `📸 تم إرفاق الصورة بنجاح (${file.name}). جاري تحليل الصورة ومطابقتها مع مواصفات جهازك...` :
-                    `📸 Screenshot attached (${file.name}). Analyzing image against system hardware...`;
-                appendMessage('bot', msg);
+                appendMessage('bot', `📸 **روكي:** تم استلام الصورة (${file.name}) بنجاح! جاري فحص لقطة الشاشة وإعطائك التشخيص المناسب.`);
             }
         }
 
         function removeImage() {
             attachedImageName = "";
-            document.getElementById('
+            document.getElementById('img-preview-box').classList.add('hidden');
+        }
+
+        function handleEnter(e) {
+            if (e.key === 'Enter') sendChatMessage();
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            appendMessage('user', text);
+            input.value = "";
+
+            const cpu = document.getElementById('cpu').value;
+            const gpu = document.getElementById('gpu').value;
+            const ram = document.getElementById('ram').value;
+
+            setTimeout(() => {
+                let reply = generateRockyResponse(text, cpu, gpu, ram);
+                appendMessage('bot', reply);
+            }, 500);
+        }
+
+        function appendMessage(sender, text) {
+            const win = document.getElementById('chat-window');
+            const isUser = sender === 'user';
+
+            const div = document.createElement('div');
+            div.className = `flex gap-2.5 items-start ${isUser ? 'flex-row-reverse' : ''}`;
+
+            const icon = isUser ? 
+                `<div class="w-7 h-7 rounded-lg bg-amber-500 flex items-center justify-center text-gray-950 shrink-0 font-bold"><i class="fa-solid fa-user"></i></div>` :
+                `<div class="w-7 h-7 rounded-lg bg-cyan-600 flex items-center justify-center text-white shrink-0 font-bold"><i class="fa-solid fa-robot"></i></div>`;
+
+            const bgClass = isUser ? 'bg-cyan-950 border border-cyan-800 text-cyan-100' : 'bg-gray-800 border border-gray-700 text-gray-200';
+
+            div.innerHTML = `
+                ${icon}
+                <div class="${bgClass} p-3 rounded-2xl ${isUser ? 'rounded-tl-none' : 'rounded-tr-none'} leading-relaxed max-w-lg whitespace-pre-line text-xs">
+                    ${text}
+                </div>
+            `;
+
+            win.appendChild(div);
+            win.scrollTop = win.scrollHeight;
+        }
+
+        function generateRockyResponse(query, cpu, gpu, ram) {
+            const q = query.toLowerCase();
+            let imgContext = attachedImageName ? ` (بناءً على الصورة المرفقة: ${attachedImageName})` : '';
+
+            if (q.includes('بطيء') || q.includes('slow')) {
+                return `🤖 **روكي:** بالنسبة لجهازك الذي يحتوي على معالج (${cpu}) ورام (${ram})، تأكد من تنظيف الملفات المؤقتة وإلغاء التطبيقات التي تعمل بالخلفية لزيادة السرعة الفورية.`;
+            } else if (q.includes('لعبة') || q.includes('lag') || q.includes('تقطيع') || q.includes('fps')) {
+                return `🎮 **روكي:** مع كارت الشاشة (${gpu}) والرام (${ram})${imgContext}، أنصحك بتحديث التعريفات الرسمية وخفض إعدادات الجرافيك للحصول على أداء سلس وخالي من التقطيع.`;
+            } else if (q.includes('حرارة') || q.includes('heat')) {
+                return `🔥 **روكي:** ارتفاع الحرارة قد يسبب هبوطاً مفاجئاً في أداء معالجك (${cpu}). نظف الأتربة من المروحة وتأكد من تهوية الغرفة أو المكتب بشكل جيد!`;
+            } else {
+                return `🤖 **روكي:** أهلاً بك يا لهادي! لقد استقبلت رسالتك ("${query}")${imgContext} ومواصفاتك [ المعالج: ${cpu} | الكارت: ${gpu} | الرام: ${ram} ]. أنصحك بإعادة تشغيل الحاسوب والتأكد من تحديث نظام التشغيل بانتظام لاستقرار الأداء.`;
+            }
+        }
+    </script>
+</body>
+</html>
