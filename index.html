@@ -24,9 +24,9 @@
             
             <!-- Language Selector -->
             <div class="flex bg-gray-800 p-1 rounded-xl border border-gray-700 text-xs font-semibold">
-                <button type="button" onclick="setLanguage('ar')" id="btn-ar" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white transition">العربية</button>
-                <button type="button" onclick="setLanguage('fr')" id="btn-fr" class="px-3 py-1.5 rounded-lg hover:text-cyan-400 text-gray-400 transition">Français</button>
-                <button type="button" onclick="setLanguage('en')" id="btn-en" class="px-3 py-1.5 rounded-lg hover:text-cyan-400 text-gray-400 transition">English</button>
+                <button type="button" onclick="setLanguage('ar')" id="btn-ar" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white transition cursor-pointer">العربية</button>
+                <button type="button" onclick="setLanguage('fr')" id="btn-fr" class="px-3 py-1.5 rounded-lg hover:text-cyan-400 text-gray-400 transition cursor-pointer">Français</button>
+                <button type="button" onclick="setLanguage('en')" id="btn-en" class="px-3 py-1.5 rounded-lg hover:text-cyan-400 text-gray-400 transition cursor-pointer">English</button>
             </div>
         </div>
     </header>
@@ -34,17 +34,17 @@
     <!-- Main Container -->
     <main class="max-w-4xl mx-auto w-full p-4 md:p-6 space-y-6 my-2">
         
-        <!-- Hardware Specs Selection (Expanded) -->
+        <!-- Hardware Specs Selection (Expanded with All Brands) -->
         <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-xl">
             <h2 class="text-base font-bold text-cyan-400 mb-4 flex items-center gap-2 border-b border-gray-800 pb-3">
-                <i class="fa-solid fa-microchip"></i> حدد مواصفات حاسوبك بكل دقة (قائمة شاملة):
+                <i class="fa-solid fa-microchip"></i> حدد مواصفات حاسوبك بكل دقة (جميع البراندات):
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- CPU (Expanded) -->
+                <!-- CPU (All Brands) -->
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1">المعالج (CPU):</label>
-                    <select id="cpu" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
+                    <select id="cpu" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500 cursor-pointer">
                         <optgroup label="Intel Core الجيلات القديمة">
                             <option value="Intel Core i3 / i5 (2nd - 7th Gen)">Intel Core (الجيل 2 إلى 7)</option>
                         </optgroup>
@@ -63,10 +63,10 @@
                     </select>
                 </div>
 
-                <!-- GPU (Expanded) -->
+                <!-- GPU (All Brands) -->
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1">كارت الشاشة (GPU):</label>
-                    <select id="gpu" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
+                    <select id="gpu" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500 cursor-pointer">
                         <optgroup label="Intel مدمج (Integrated)">
                             <option value="Intel HD Graphics 520/530/630" selected>Intel HD Graphics 520 / 530 / 630</option>
                             <option value="Intel Iris Xe Graphics">Intel Iris Xe Graphics</option>
@@ -88,31 +88,31 @@
                     </select>
                 </div>
 
-                <!-- RAM (Expanded) -->
+                <!-- RAM -->
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1">الذاكرة العشوائية (RAM):</label>
-                    <select id="ram" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
-                        <option value="2 GB DDR2/DDR3">2 GB (قديم جداً)</option>
+                    <select id="ram" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500 cursor-pointer">
+                        <option value="2 GB DDR2/DDR3">2 GB</option>
                         <option value="4 GB DDR3/DDR4">4 GB</option>
-                        <option value="8 GB DDR3/DDR4" selected>8 GB (ممتاز للاستخدام اليومي)</option>
-                        <option value="16 GB DDR4/DDR5">16 GB (احترافي للألعاب والأداء)</option>
-                        <option value="32 GB أو أعلى DDR4/DDR5">32 GB أو أعلى (أداء فائق)</option>
+                        <option value="8 GB DDR3/DDR4" selected>8 GB</option>
+                        <option value="16 GB DDR4/DDR5">16 GB</option>
+                        <option value="32 GB أو أعلى">32 GB أو أعلى</option>
                     </select>
                 </div>
 
-                <!-- Storage (Expanded) -->
+                <!-- Storage -->
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1">نوع التخزين (Storage):</label>
-                    <select id="storage" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500">
-                        <option value="HDD 320GB / 500GB / 1TB (بطيء)">HDD تقليدي (هارد ديسك ميكانيكي)</option>
-                        <option value="SSD SATA 256GB / 512GB (سريع)" selected>SSD SATA (سريع)</option>
-                        <option value="NVMe M.2 SSD 512GB / 1TB (فائق السرعة)">NVMe M.2 SSD (فائق السرعة جداً)</option>
+                    <select id="storage" class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500 cursor-pointer">
+                        <option value="HDD">HDD تقليدي</option>
+                        <option value="SSD" selected>SSD سريع</option>
+                        <option value="NVMe M.2 SSD">NVMe M.2 فائق السرعة</option>
                     </select>
                 </div>
             </div>
         </section>
 
-        <!-- Quick Problems Fix -->
+        <!-- Quick Problems Fix (Fully Responsive Buttons) -->
         <section class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-xl">
             <h2 class="text-base font-bold text-amber-400 mb-3 flex items-center gap-2">
                 <i class="fa-solid fa-wrench"></i> حلول سريعة للمشاكل الشائعة:
@@ -155,7 +155,7 @@
                     <img id="img-preview" class="w-12 h-12 object-cover rounded-lg border border-gray-700">
                     <span id="img-name" class="text-xs text-green-400 truncate max-w-xs"></span>
                 </div>
-                <button type="button" onclick="removeImage()" class="text-xs text-red-400 hover:text-red-300 px-2 py-1"><i class="fa-solid fa-trash"></i></button>
+                <button type="button" onclick="removeImage()" class="text-xs text-red-400 hover:text-red-300 px-2 py-1 cursor-pointer"><i class="fa-solid fa-trash"></i></button>
             </div>
         </section>
 
@@ -177,137 +177,4 @@
                     <div class="w-7 h-7 rounded-lg bg-cyan-600 flex items-center justify-center text-white shrink-0 font-bold">
                         <i class="fa-solid fa-robot"></i>
                     </div>
-                    <div class="bg-gray-800 border border-gray-700 p-3 rounded-2xl rounded-tr-none text-gray-200 leading-relaxed max-w-lg">
-                        أهلاً بك يا لهادي! أنا **روكي (Rocky)** مساعدك الذكي لتشخيص أعطال وحواسيب الألعاب. اخترت مواصفاتك الكاملة بالأعلى، اكتب لي أي مشكلة وسأعطيك الحل الفوري!
-                    </div>
-                </div>
-            </div>
-
-            <!-- Chat Input Area -->
-            <div class="flex gap-2">
-                <input type="text" id="chat-input" onkeypress="handleEnter(event)" class="flex-1 bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-cyan-500" placeholder="اسأل روكي عن أي مشكلة...">
-                <button type="button" onclick="sendChatMessage()" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold px-5 rounded-xl transition flex items-center justify-center cursor-pointer">
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="text-center py-4 border-t border-gray-900 text-xs text-gray-500">
-        جميع الحقوق محفوظة © My PC 2026
-    </footer>
-
-    <!-- Logic Script -->
-    <script>
-        let currentLang = 'ar';
-        let attachedImageName = "";
-
-        const solutions = {
-            slow: "🤖 **رد روكي (حل بطء النظام):**\n- يا لهادي، تأكد من عدم امتلاء قرص النظام (C).\n- عطل البرامج التي تعمل تلقائياً عند الإقلاع من مدير المهام (Task Manager).\n- إذا كنت تستخدم هارد HDD قديم، أنصحك بالترقية إلى SSD لتبلغ السرعة القصوى!",
-            games: "🎮 **رد روكي (حل تقطيع الألعاب):**\n- قم بتحديث تعريف كارت الشاشة لآخر إصدار.\n- قلل جودة الرسوميات (Graphics) ودقة الشاشة داخل اللعبة.\n- أغلق متصفح الإنترنت وبرامج الخلفية لتفريغ الرام وتثبيت الـ FPS.",
-            heat: "🔥 **رد روكي (حل ارتفاع الحرارة):**\n- قم بتنظيف المروحة ومشتت الحرارة من الأتربة المتراكمة.\n- تأكد من تغيير المعجون الحراري (Thermal Paste) للمعالج بانتظام لتجنب التهنيج.",
-            net: "🌐 **رد روكي (حل مشاكل الإنترنت):**\n- أعد تشغيل الراوتر وافصله لمدة 30 ثانية.\n- استخدم أمر (ipconfig /flushdns) في موجه الأوامر (CMD) لتنظيف الكاش."
-        };
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            document.getElementById('html-root').setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-            
-            ['ar', 'fr', 'en'].forEach(l => {
-                const btn = document.getElementById(`btn-${l}`);
-                if (l === lang) {
-                    btn.className = "px-3 py-1.5 rounded-lg bg-cyan-600 text-white transition";
-                } else {
-                    btn.className = "px-3 py-1.5 rounded-lg hover:text-cyan-400 text-gray-400 transition";
-                }
-            });
-        }
-
-        function quickFix(type) {
-            const text = solutions[type];
-            appendMessage('bot', text);
-        }
-
-        function handleImage(e) {
-            const file = e.target.files[0];
-            if (file) {
-                attachedImageName = file.name;
-                document.getElementById('img-name').innerText = file.name;
-                document.getElementById('img-preview').src = URL.createObjectURL(file);
-                document.getElementById('img-preview-box').classList.remove('hidden');
-
-                appendMessage('bot', `📸 **روكي:** تم استلام الصورة (${file.name}) بنجاح! جاري فحص لقطة الشاشة وإعطائك التشخيص المناسب.`);
-            }
-        }
-
-        function removeImage() {
-            attachedImageName = "";
-            document.getElementById('img-preview-box').classList.add('hidden');
-        }
-
-        function handleEnter(e) {
-            if (e.key === 'Enter') sendChatMessage();
-        }
-
-        function sendChatMessage() {
-            const input = document.getElementById('chat-input');
-            const text = input.value.trim();
-            if (!text) return;
-
-            appendMessage('user', text);
-            input.value = "";
-
-            const cpu = document.getElementById('cpu').value;
-            const gpu = document.getElementById('gpu').value;
-            const ram = document.getElementById('ram').value;
-            const storage = document.getElementById('storage').value;
-
-            setTimeout(() => {
-                let reply = generateRockyResponse(text, cpu, gpu, ram, storage);
-                appendMessage('bot', reply);
-            }, 500);
-        }
-
-        function appendMessage(sender, text) {
-            const win = document.getElementById('chat-window');
-            const isUser = sender === 'user';
-
-            const div = document.createElement('div');
-            div.className = `flex gap-2.5 items-start ${isUser ? 'flex-row-reverse' : ''}`;
-
-            const icon = isUser ? 
-                `<div class="w-7 h-7 rounded-lg bg-amber-500 flex items-center justify-center text-gray-950 shrink-0 font-bold"><i class="fa-solid fa-user"></i></div>` :
-                `<div class="w-7 h-7 rounded-lg bg-cyan-600 flex items-center justify-center text-white shrink-0 font-bold"><i class="fa-solid fa-robot"></i></div>`;
-
-            const bgClass = isUser ? 'bg-cyan-950 border border-cyan-800 text-cyan-100' : 'bg-gray-800 border border-gray-700 text-gray-200';
-
-            div.innerHTML = `
-                ${icon}
-                <div class="${bgClass} p-3 rounded-2xl ${isUser ? 'rounded-tl-none' : 'rounded-tr-none'} leading-relaxed max-w-lg whitespace-pre-line text-xs">
-                    ${text}
-                </div>
-            `;
-
-            win.appendChild(div);
-            win.scrollTop = win.scrollHeight;
-        }
-
-        function generateRockyResponse(query, cpu, gpu, ram, storage) {
-            const q = query.toLowerCase();
-            let imgContext = attachedImageName ? ` (بناءً على الصورة المرفقة: ${attachedImageName})` : '';
-
-            if (q.includes('بطيء') || q.includes('slow')) {
-                return `🤖 **روكي:** بناءً على اختيارك لمواصفات [ المعالج: ${cpu} | الرام: ${ram} | التخزين: ${storage} ]، أنصحك بفحص استهلاك القرص ومسح الملفات المؤقتة لتسريع الجهاز فوراً.`;
-            } else if (q.includes('لعبة') || q.includes('lag') || q.includes('تقطيع') || q.includes('fps')) {
-                return `🎮 **روكي:** مع كارت الشاشة المختار (${gpu}) والرام (${ram})${imgContext}، تأكد من تحديث التعريفات الرسمية وخفض إعدادات الجرافيك للحصول على أداء ألعاب سلس ومستقر.`;
-            } else if (q.includes('حرارة') || q.includes('heat')) {
-                return `🔥 **روكي:** احرص دائماً على مراقبة حرارة معالجك (${cpu}) وتغيير المعجون الحراري وتنظيف المراوح بانتظام للحفاظ على أمان القطع.`;
-            } else {
-                return `🤖 **روكي:** أهلاً بك يا لهادي! لقد استقبلت رسالتك ("${query}")${imgContext} بالاعتماد على إعدادات جهازك [ CPU: ${cpu} | GPU: ${gpu} | RAM: ${ram} | التخزين: ${storage} ]. أنا جاهز دائماً لمساعدتك في أي استفسار هندسي آخر!`;
-            }
-        }
-    </script>
-</body>
-</html>
+                    <div
