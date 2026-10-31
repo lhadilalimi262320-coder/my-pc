@@ -30,7 +30,7 @@
             <h2 id="section-specs" class="text-lg font-bold text-cyan-300 mb-3 border-b border-gray-700 pb-2">اختر مواصفات جهازك بدقة:</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- المعالجات (CPU) الموسعة -->
+                <!-- المعالجات (CPU) -->
                 <div>
                     <label id="label-cpu" class="block text-gray-300 text-xs mb-1 font-semibold">المعالج (CPU):</label>
                     <select id="cpu" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
@@ -52,7 +52,7 @@
                     </select>
                 </div>
 
-                <!-- كروت الشاشة (GPU) الموسعة -->
+                <!-- كروت الشاشة (GPU) -->
                 <div>
                     <label id="label-gpu" class="block text-gray-300 text-xs mb-1 font-semibold">كارت الشاشة (GPU):</label>
                     <select id="gpu" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
@@ -77,7 +77,7 @@
                     </select>
                 </div>
 
-                <!-- الرام (RAM) الموسعة -->
+                <!-- الرام (RAM) -->
                 <div>
                     <label id="label-ram" class="block text-gray-300 text-xs mb-1 font-semibold">الذاكرة العشوائية (RAM):</label>
                     <select id="ram" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
@@ -89,7 +89,7 @@
                     </select>
                 </div>
 
-                <!-- التخزين (Storage) الموسعة -->
+                <!-- التخزين (Storage) -->
                 <div>
                     <label id="label-storage" class="block text-gray-300 text-xs mb-1 font-semibold">نوع التخزين (Storage):</label>
                     <select id="storage" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-cyan-500">
@@ -136,7 +136,7 @@
             <div class="space-y-3">
                 <textarea id="user-problem-input" rows="2" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-cyan-500" placeholder="اكتب أي مشكلة أخرى تواجهك..."></textarea>
                 
-                <button id="btn-analyze" onclick="analyzeCustomProblem()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-gray-900 font-extrabold p-3 rounded-xl shadow-lg transition duration-200 text-sm">
+                <button id="btn-analyze" onclick="analyzeCustomProblem()" class="w-full bg-cyan-500 hover:bg-cyan-400 text-gray-900 font-extrabold p-3 rounded-xl shadow-lg transition duration-200 text-sm cursor-pointer">
                     💡 تحليل المشكلة وإعطاء الحل الفوري
                 </button>
             </div>
@@ -299,16 +299,33 @@
                 container.classList.remove('hidden');
 
                 text.innerHTML = currentLang === 'ar' ? 
-                    "📸 **تم استلام الصورة وتحليلها:** تم فحص لقطة الشاشة المرفقة. يُنصح بالتأكد من خلو واجهة النظام من ملفات التالفة الناتجة عن الخطأ الظاهر في الصورة، ومراجعة آخر تحديث للتعريف." :
+                    "📸 **تم استلام الصورة وتحليلها:** تم فحص لقطة الشاشة المرفقة. يُنصح بالتأكد من خلو واجهة النظام من الملفات التالفة الناتجة عن الخطأ الظاهر في الصورة، ومراجعة آخر تحديث للتعريف." :
                     "📸 **Image received & analyzed:** Screenshot successfully attached.";
                 box.classList.remove('hidden');
             }
         }
 
         function analyzeCustomProblem() {
-            const prob = document.getElementById('user-problem-input').value.trim();
+            const probInput = document.getElementById('user-problem-input');
+            const prob = probInput ? probInput.value.trim() : "";
             const box = document.getElementById('result-box');
             const text = document.getElementById('result-text');
 
             if (!prob) {
-                text.innerText = currentLang === 'ar' ? "⚠️ يرجى كتابة المشكلة أو إرفاق صورة أولاً!" : "⚠️ Please type
+                text.innerText = currentLang === 'ar' ? "⚠️ يرجى كتابة المشكلة في المربع أولاً لكي أتمكن من إعطائك الحل المناسب!" : "⚠️ Please type your problem first!";
+                box.classList.remove('hidden');
+                return;
+            }
+
+            let solution = "";
+            const p = prob.toLowerCase();
+
+            if (p.includes('بطيء') || p.includes('slow') || p.includes('lent')) {
+                solution = "🔧 **حل مشكلة البطء:** تأكد من عدم امتلاء قرص النظام (C). قم بإلغاء البرامج التي تعمل عند الإقلاع عبر Task Manager، وفحص الجهاز من الفيروسات والملفات المؤقتة.";
+            } else if (p.includes('لعبة') || p.includes('game') || p.includes('lag') || p.includes('تقطيع')) {
+                solution = "🎮 **حل مشكلة تقطيع الألعاب:** قم بتحديث تعريف كارت الشاشة لآخر إصدار، قلل إعدادات الجرافيك داخل اللعبة إلى (Medium أو Low)، وأغلق متصفح الإنترنت وبرامج الخلفية لتوفير الرام.";
+            } else if (p.includes('حرارة') || p.includes('heat') || p.includes('مروحة') || p.includes('fan')) {
+                solution = "🔥 **حل مشكلة ارتفاع الحرارة والصوت المرتفع:** نظف مروحة الحاسوب ومشتت الحرارة من الأتربة المتراكمة، وقم بتغيير المعجون الحراري (Thermal Paste) للمعالج.";
+            } else if (p.includes('إنترنت') || p.includes('نت') || p.includes('net') || p.includes('wifi')) {
+                solution = "🌐 **حل مشاكل الإنترنت:** قم بإعادة تشغيل جهاز الراوتر، احذف شبكة الواي فاي وأعد الاتصال بها، أو قم بتحديث تعريف كارت الشبكة من الإعدادات.";
+            } else
